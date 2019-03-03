@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="utf-8">
+    <title th:text="${title}"></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+    <meta property="og:title" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="">
+
+    <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+
+    <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+    <link href="favicon.ico" rel="shortcut icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.min.css}"/>
+
+    <!-- Libraries CSS Files -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/animate-css/animate.min.css}" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <!-- Custom style sheet -->
+    <link th:href="@{/css/product_details.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- =======================================================
+      Theme Name: Imperial
+      Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+      Author: BootstrapMade.com
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+
+</head>
+<body>
+<div id="preloader"></div>
+
+<a href="/addProduct" type="button" class="btn btn-round add-product-btn"><i class="fas fa-plus"></i> <span>Add Product</span></a>
+<!--==========================
+  Header Section
+  ============================-->
+<header id="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <!--<a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>-->
+            <!-- Uncomment below if you prefer to use a text image -->
+            <h1><a href="#hero">Gadget-Meter</a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#hero">Home</a></li>
+                <li><a href="D:/MiPhonesRepo/Imperial/about.html">About Us</a></li>
+                <li><a href="D:/MiPhonesRepo/Imperial/about.html#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+<section id="list">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Products</h3>
+                <div class="section-title-divider"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-12">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control search-field" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default search-field-icon" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10">
+                <div class="list-card">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon">
+                                            <img height="80" width="80" src="https://cdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-fold-3.jpg">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon-right">
+                                            <a href="D:/MiPhonesRepo/Imperial/productDetails.html"><i class="fas fa-eye"></i></a>
+                                            <i class="fas fa-pen-square"></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="list-card">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon">
+                                            <img height="80" width="80" src="https://cdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-fold-7.jpg">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon-right">
+                                            <a href="D:/MiPhonesRepo/Imperial/productDetails.html"><i class="fas fa-eye"></i></a>
+                                            <i class="fas fa-pen-square"></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="list-card">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon">
+                                            <img height="80" width="80" src="https://cdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-fold-4.jpg">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon-right">
+                                            <a href="D:/MiPhonesRepo/Imperial/productDetails.html"><i class="fas fa-eye"></i></a>
+                                            <i class="fas fa-pen-square"></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="list-card">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon">
+                                            <img height="80" width="80" src="https://cdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-fold-5.jpg">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <a href="#">
+                                        <!--<i class="media-object fa fa-satellite">-->
+                                        <div class="media-object media-icon-right">
+                                            <a href="D:/MiPhonesRepo/Imperial/productDetails.html"><i class="fas fa-eye"></i></a>
+                                            <i class="fas fa-pen-square"></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--==========================
+  Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    &copy; Copyright <strong>Gadget-Meter Studios</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+                    -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Required JavaScript Libraries -->
+<!--<script th:src="@{/javascript/jquery-3.3.1.min.js}"></script>-->
+<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/lib/superfish/hoverIntent.js}"></script>
+<script th:src="@{/lib/superfish/superfish.min.js}"></script>
+<script th:src="@{/lib/morphext/morphext.min.js}"></script>
+<script th:src="@{/lib/wow/wow.min.js}"></script>
+<script th:src="@{/lib/stickyjs/sticky.js}"></script>
+<script th:src="@{/lib/easing/easing.js}"></script>
+
+<!-- Template Specisifc Custom Javascript File -->
+<script th:src="@{/javascript/custom.js}"></script>
+
+</body>
+</html>
