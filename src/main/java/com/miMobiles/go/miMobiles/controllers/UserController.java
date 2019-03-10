@@ -32,11 +32,6 @@ public class UserController {
     public List<UserDto> getAllUsers(){
         List<UserDto> users = new ArrayList<>();
         userRepository.getById(1L).forEach(user -> users.add(new UserDto(user)));
-        try {
-            //TODO:API GATEWAY
-        } catch (AWTException | MalformedURLException e) {
-            e.printStackTrace();
-        }
         return users;
     }
 
