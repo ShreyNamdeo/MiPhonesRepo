@@ -5,7 +5,7 @@ import com.miMobiles.go.miMobiles.models.Role;
 import com.miMobiles.go.miMobiles.models.User;
 import com.miMobiles.go.miMobiles.repositories.RoleRepository;
 import com.miMobiles.go.miMobiles.repositories.UserRepository;
-import doryan.windowsnotificationapi.fr.Notification;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +33,7 @@ public class UserController {
         List<UserDto> users = new ArrayList<>();
         userRepository.getById(1L).forEach(user -> users.add(new UserDto(user)));
         try {
-            Notification.sendNotification("This is index called", "Some good details here", TrayIcon.MessageType.NONE);
+            //TODO:API GATEWAY
         } catch (AWTException | MalformedURLException e) {
             e.printStackTrace();
         }
