@@ -51,4 +51,128 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="2" author="phoneApp">
+        <createTable tableName="products">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="network_technology" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="announced" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="body_length" type="integer">
+                <constraints nullable="true"/>
+            </column>
+            <column name="body_width" type="integer">
+                <constraints nullable="true"/>
+            </column>
+            <column name="body_height" type="integer">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sim_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="display_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="display_size" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="resolution" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="colors" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="price" type="integer">
+                <constraints nullable="true"/>
+            </column>
+            <column name="battery_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="battery_charging" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="card_slot" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="internal_storage" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="loud_speaker" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="3_5_mm_jack" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sound_features" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="wlan" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="bluetooth" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="gps" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="nfc" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="radio" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="usb" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="os" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="chip_set" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cpu" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="gpu" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="main_camera_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="main_camera_description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="main_camera_features" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="main_camera_video" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="selfie_camera_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="selfie_camera_description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="selfie_camera_features" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="selfie_camera_video" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="other_sensors" type="text">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
