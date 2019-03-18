@@ -175,4 +175,36 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="3" author="phoneApp">
+        <addColumn tableName="products">
+            <column name="product_name" type="varchar(255)" defaultValue="-">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="phoneApp">
+        <addColumn tableName="products">
+            <column name="created" type="timestamp WITH TIME ZONE">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="5" author="phoneApp">
+        <renameColumn columnDataType="boolean"
+                      newColumnName="sound_3_5_mm_jack"
+                      oldColumnName="3_5_mm_jack"
+                      tableName="products"/>
+    </changeSet>
+    <changeSet id="6" author="phoneApp">
+        <addColumn tableName="products">
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <addColumn tableName="products">
+            <column name="weight" type="FLOAT">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

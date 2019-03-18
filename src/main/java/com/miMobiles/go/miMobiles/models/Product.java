@@ -16,6 +16,9 @@ public class Product {
     @Column(name = "product_id")
     private String productId;
 
+    @Column(name = "product_name")
+    private String productName;
+
     @Column(name = "network_technology")
     private String networkTechnology;
 
@@ -33,6 +36,9 @@ public class Product {
 
     @Column(name = "body_height")
     private int bodyHeight;
+
+    @Column(name = "weight")
+    private float weight;
 
     @Column(name = "sim_type")
     private String simType;
@@ -67,7 +73,7 @@ public class Product {
     @Column(name = "loud_speaker")
     private boolean loudSpeaker;
 
-    @Column(name = "3_5_mm_jack")
+    @Column(name = "sound_3_5_mm_jack")
     private boolean mm35jack;
 
     @Column(name = "sound_features")
@@ -130,6 +136,9 @@ public class Product {
     @Column(name = "other_sensors")
     private String otherSensors;
 
+    @Column(name = "description")
+    private String description;
+
     public Long getId() {
         return id;
     }
@@ -144,6 +153,14 @@ public class Product {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getNetworkTechnology() {
@@ -192,6 +209,14 @@ public class Product {
 
     public void setBodyHeight(int bodyHeight) {
         this.bodyHeight = bodyHeight;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
     public String getSimType() {
@@ -448,5 +473,13 @@ public class Product {
 
     public void setOtherSensors(String otherSensors) {
         this.otherSensors = otherSensors;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
