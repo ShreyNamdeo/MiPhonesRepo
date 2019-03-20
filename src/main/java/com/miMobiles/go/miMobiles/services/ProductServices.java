@@ -22,4 +22,8 @@ public class ProductServices {
     public Product getByProductId(String productId){
         return productRepository.findByProductId(productId);
     }
+
+    public List<Product> getAllProductsExcept(String productId) {
+        return productRepository.findAllExcept(productId);
+    }
 }

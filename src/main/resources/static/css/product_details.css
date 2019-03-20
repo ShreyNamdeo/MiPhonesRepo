@@ -46,7 +46,7 @@ img {
       margin-right: 0; }
 
 .preview-thumbnail.nav-tabs img{
-    height:100px;
+    height:4em !important;
 }
 
 @media (max-width: 768px) {
@@ -54,7 +54,7 @@ img {
     height: 50px;
   }
   .preview-thumbnail.nav-tabs img{
-      height:50px;
+      height:4em !important;
   }
 }
 
