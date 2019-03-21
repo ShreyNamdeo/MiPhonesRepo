@@ -883,6 +883,8 @@ body.mobile-nav-active #mobile-nav-toggle {
     font-size: 20px !important;
     margin-top: 10px !important;
     border: 3px solid #03C4EB !important;
+    position:relative;
+    top: 3em;
 }
 .show-all-products-btn:hover{
     background: transparent !important;
