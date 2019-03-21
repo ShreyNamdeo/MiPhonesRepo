@@ -207,4 +207,40 @@
             </column>
         </addColumn>
     </changeSet>
+    <changeSet id="7" author="phoneApp">
+        <createTable tableName="product_images">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_db_id" type="bigint" >
+                <constraints nullable="false" foreignKeyName="fk_products"
+                             references="users(id)"/>
+            </column>
+            <column name="s3_key" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="url" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="media_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="video_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="phoneApp">
+        <dropForeignKeyConstraint baseTableName="product_images" constraintName="fk_products"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_db_id"
+                                 baseTableName="product_images"
+                                 constraintName="fk_products"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="products"/>
+    </changeSet>
 </databaseChangeLog>

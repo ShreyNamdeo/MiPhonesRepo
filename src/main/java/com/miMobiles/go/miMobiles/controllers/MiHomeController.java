@@ -1,7 +1,7 @@
 package com.miMobiles.go.miMobiles.controllers;
 
+import com.miMobiles.go.miMobiles.dto.ProductMediaDto;
 import com.miMobiles.go.miMobiles.models.Product;
-import com.miMobiles.go.miMobiles.repositories.ProductRepository;
 import com.miMobiles.go.miMobiles.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,9 +43,11 @@ public class MiHomeController {
     public String productDetails(Model model, @RequestParam("product") @DefaultValue(value = " ") String productId ){
         model.addAttribute("title",title);
         Product product = productServices.getByProductId(productId);
+        List<ProductMediaDto> productMediaList = productServices.getAllMediaForProductById(product.getId());
         List<Product> productsExceptSelected = productServices.getAllProductsExcept(productId);
         model.addAttribute("displaySieInCm",String.format("%.2f", Float.parseFloat(product.getDisplaySize())*2.54));
         model.addAttribute(product);
+        model.addAttribute("productMediaList",productMediaList);
         model.addAttribute("prods",productsExceptSelected);
         return "productDetails";
     }
@@ -55,8 +57,21 @@ public class MiHomeController {
                                         @RequestParam("q2") @DefaultValue(value = " ") String productId2){
         model.addAttribute("title",title);
         Product product1 = productServices.getByProductId(productId1);
+        model.addAttribute("displaySie1InCm",String.format("%.2f", Float.parseFloat(product1.getDisplaySize())*2.54));
+        List<ProductMediaDto> product1MediaList = productServices.getAllMediaForProductById(product1.getId());
         Product product2 = productServices.getByProductId(productId2);
+        model.addAttribute("displaySie2InCm",String.format("%.2f", Float.parseFloat(product2.getDisplaySize())*2.54));
+        List<ProductMediaDto> product2MediaList = productServices.getAllMediaForProductById(product2.getId());
+        model.addAttribute("product1",product1);
+        model.addAttribute("product1MediaList",product1MediaList);
+        model.addAttribute("product2",product2);
+        model.addAttribute("product2MediaList",updateMediaSequence(product2MediaList,product1MediaList));
         return "productDetailsCompare";
+    }
+
+    private List<ProductMediaDto> updateMediaSequence(List<ProductMediaDto> productMediaListResponse, List<ProductMediaDto> productMediaListReference) {
+        productMediaListResponse.forEach(productMediaDto -> productMediaDto.setMediaSeq(productMediaDto.getMediaSeq()+productMediaListReference.size()));
+        return productMediaListResponse;
     }
 
     @RequestMapping(value = "/addProduct")
