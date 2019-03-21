@@ -79,4 +79,10 @@ public class MiHomeController {
         model.addAttribute("title",title);
         return "addProduct";
     }
+
+    @RequestMapping(value = "/products")
+    public String products(Model model){
+        model.addAttribute("title",title);
+        return "products";
+    }
 }

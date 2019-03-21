@@ -875,3 +875,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 13px;
   color: #ccc;
 }
+/*---------------------------------------Footer Ends ------------------------------------*/
+.show-all-products-btn{
+    background: #03C4EB !important;
+    color: #ffffff !important;
+    padding: 10px 20px 10px 20px !important;
+    font-size: 20px !important;
+    margin-top: 10px !important;
+    border: 3px solid #03C4EB !important;
+}
+.show-all-products-btn:hover{
+    background: transparent !important;
+    color: #03C4EB !important;
+}

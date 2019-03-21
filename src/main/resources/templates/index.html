@@ -38,6 +38,9 @@
     <!-- Main Stylesheet File -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
 
+    <!-- Custom style sheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <!-- =======================================================
       Theme Name: Imperial
       Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
@@ -64,10 +67,29 @@
 <body>
 <div id="preloader"></div>
 
+<!--==========================
+Hero Section
+============================-->
+<section id="hero">
+    <div class="hero-container">
+        <div class="wow fadeIn">
+            <div class="hero-logo">
+                <img class="" src="img/logo.png" alt="Imperial">
+            </div>
+
+            <h1>Welcome to Digital Sunrisers </h1>
+            <h2>We create <span class="rotating">beautiful graphics, functional websites, working mobile apps, digital marketing solutions, career counseling schedules, job consultancy </span></h2>
+            <div class="actions">
+                <a href="#portfolio" class="btn-get-started">Products</a>
+                <a href="#services" class="btn-services">Our Services</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!--==========================
-  Header Section
-  ============================-->
+Header Section
+============================-->
 <header id="header">
     <div class="container">
 
@@ -80,16 +102,12 @@
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="D:/MiPhonesRepo/Imperial/about.html">About Us</a></li>
-                <li><a href="D:/MiPhonesRepo/Imperial/about.html#contact">Contact Us</a></li>
-                <li>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search " aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text search-button" id="basic-addon2"><i style="color:#FFFFFF;" class="fa fa-search"></i></span>
-                        </div>
-                    </div>
-                </li>
+                <!--<li><a href="#about">About Us</a></li>-->
+                <li><a href="#portfolio">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#subscribe">Subscribe</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
             </ul>
         </nav>
         <!-- #nav-menu-container -->
@@ -98,21 +116,21 @@
 <!-- #header -->
 
 <!--==========================
-  Item Portfolio Section
-  ============================-->
+Porfolio Section
+============================-->
 <section id="portfolio">
     <div class="container wow fadeInUp">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-title">Products</h3>
+                <h3 class="section-title">Featured Products</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description">Latest products to choose from</p>
+                <p class="section-description">Si stante, hoc natura videlicet vult, salvam esse se, quod concedimus ses haec dicturum fuisse</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-1.jpg);" href="/productDetails">
+                <a class="portfolio-item" style="background-image: url(img/portfolio-1.jpg);" href="">
                     <div class="details">
                         <h4>Portfolio 1</h4>
                         <span>Alored dono par</span>
@@ -182,10 +200,195 @@
                     </div>
                 </a>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align:center;">
+                <a href="/products" class="show-all-products-btn" type="button"> Show all products <i class="fas fa-chevron-right"></i> </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--==========================
+Services Section
+============================-->
+<section id="services">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Our Services</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fas fa-mobile-alt" style="padding:0 8px 0 8px"></i></div>
+                <h4 class="service-title"><a href="">Mobiles</a></h4>
+                <p class="service-description">We provide details and extensive services for latest mobile products in digital world.</p>
+            </div>
+            <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fa fa-bar-chart"></i></div>
+                <h4 class="service-title"><a href="">Digital Marketing</a></h4>
+                <p class="service-description">We compose content and provide detailed services for digital marketing.</p>
+            </div>
+            <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h4 class="service-title"><a href="">Web Development</a></h4>
+                <p class="service-description">We create and provide support for any/all enterprise level web based applications.</p>
+            </div>
+            <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fab fa-android" style="padding:0 5px 0 5px"></i></div>
+                <h4 class="service-title"><a href="">App Development</a></h4>
+                <p class="service-description">We have serviced a number of mobile applications, We can build as well as customize as per requirement.</p>
+            </div>
+            <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fas fa-award" style="padding:0 5px 0 5px"></i></div>
+                <h4 class="service-title"><a href="">Career Counseling</a></h4>
+                <p class="service-description">Get best and accurate career guidance from industry leaders.</p>
+            </div>
+            <div class="col-md-4 service-item">
+                <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                <h4 class="service-title"><a href="">Get Hired</a></h4>
+                <p class="service-description">Looking for a job ! we are here to assist you to get your dream job.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--==========================
+Subscrbe Section
+============================-->
+<section id="subscribe">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="subscribe-title">Subscribe For Updates</h3>
+                <p class="subscribe-text">Join our 1000+ subscribers and get access to the latest tools, freebies, product announcements and much more!</p>
+            </div>
+            <div class="col-md-4 subscribe-btn-container">
+                <a class="subscribe-btn" href="#">Subscribe Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--==========================
+Contact Section
+============================-->
+<section id="contact">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Contact Us</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-md-push-2">
+                <div class="info">
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p>A108 Adam Street<br>New York, NY 535022</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <p>info@example.com</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>+1 5589 55488 55s</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-5 col-md-push-2">
+                <div class="form">
+                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+                    <form action="" method="post" role="form" class="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Your Contact number" data-rule="minlen:10" data-msg="Please enter a valid mobile number" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
+                </div>
+            </div>
 
         </div>
     </div>
 </section>
+
+<!--==========================
+Testimonials Section
+============================-->
+<section id="testimonials">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Testimonials</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description">Erdo lide, nora porodo filece, salvam esse se, quod concedimus ses haec dicturum fuisse</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile">
+                    <div class="pic"><img src="img/client-1.jpg" alt=""></div>
+                    <h4>Saul Goodman</h4>
+                    <span>Lawless Inc</span>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="quote">
+                    <b><img src="img/quote_sign_left.png" alt=""></b> Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper. <small><img src="img/quote_sign_right.png" alt=""></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="quote">
+                    <b><img src="img/quote_sign_left.png" alt=""></b> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis architecto beatae. <small><img src="img/quote_sign_right.png" alt=""></small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="profile">
+                    <div class="pic"><img src="img/client-2.jpg" alt=""></div>
+                    <h4>Sara Wilsson</h4>
+                    <span>Odeo Inc</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
 <!--==========================
 Footer
 ============================-->
@@ -194,7 +397,7 @@ Footer
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
-                    &copy; Copyright <strong>Gadget-Meter Studios</strong>. All Rights Reserved
+                    &copy; Copyright <strong>Imperial Theme</strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!--
@@ -210,6 +413,7 @@ Footer
     </div>
 </footer>
 <!-- #footer -->
+
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
