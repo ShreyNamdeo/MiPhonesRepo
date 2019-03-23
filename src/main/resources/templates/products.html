@@ -38,6 +38,9 @@
     <!-- Main Stylesheet File -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
 
+    <!-- Custom css-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <!-- =======================================================
       Theme Name: Imperial
       Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
@@ -58,6 +61,12 @@
         opacity:0.6;
         padding-left: 10px;
     }
+    .search-field{
+        border-radius:30px 0 0 30px;
+    }
+    .search-field-icon{
+        border-radius:0 30px 30px 0;
+    }
     </style>
 </head>
 
@@ -72,24 +81,22 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
-            <!-- Uncomment below if you prefer to use a text image -->
-            <!--<h1><a href="#hero">Header 1</a></h1>-->
+            <a href="/"><img src="img/logo.png" alt="" title="" /></img></a>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="D:/MiPhonesRepo/Imperial/about.html">About Us</a></li>
-                <li><a href="D:/MiPhonesRepo/Imperial/about.html#contact">Contact Us</a></li>
-                <li>
+                <li class="menu-active"><a href="/">Home</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#contact">Contact Us</a></li>
+                <!--<li>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Search " aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <span class="input-group-text search-button" id="basic-addon2"><i style="color:#FFFFFF;" class="fa fa-search"></i></span>
                         </div>
                     </div>
-                </li>
+                </li>-->
             </ul>
         </nav>
         <!-- #nav-menu-container -->
@@ -102,87 +109,43 @@
   ============================-->
 <section id="portfolio">
     <div class="container wow fadeInUp">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-md-12">
                 <h3 class="section-title">Products</h3>
                 <div class="section-title-divider"></div>
                 <p class="section-description">Latest products to choose from</p>
             </div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Products</h3>
+                <div class="section-title-divider"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-12">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control search-field" placeholder="Search product by name" id="filter-text" name="filter-text">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default search-field-icon" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="row">
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-1.jpg);" href="/productDetails">
+            <div class="col-md-3 list-element" th:each="prod : ${productList}" th:data-name="${prod.productName}">
+                <a class="portfolio-item" th:style="'background-image: url('+${prod.productMedias[0].url}+');background-size: contain;'" th:href="'/productDetails?product='+${prod.productId}">
                     <div class="details">
-                        <h4>Portfolio 1</h4>
-                        <span>Alored dono par</span>
+                        <h4 th:text="${prod.productName}"></h4>
+                        <span th:text="${prod.status}"></span>
                     </div>
                 </a>
             </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-2.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 2</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-3.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 3</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-4.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 4</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-5.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 5</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-6.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 6</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-7.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 7</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-8.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 8</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
-
         </div>
     </div>
 </section>
@@ -223,7 +186,21 @@ Footer
 <script th:src="@{/lib/wow/wow.min.js}"></script>
 <script th:src="@{/lib/stickyjs/sticky.js}"></script>
 <script th:src="@{/lib/easing/easing.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("body").on('keyup','#filter-text',function(e){
+            e.preventDefault();
+            var txt=$('#“filter-text').val();
+            var regEx = new RegExp($.map($(this).val().trim().split(' '), function(v) {
+                    return '(?=.*?' + v + ')';
+                }).join(''), 'i');
 
+            $('.list-element').hide().filter(function() {
+                return regEx.exec($(this).text());
+            }).show();
+        });
+    });
+</script>
 <!-- Template Specisifc Custom Javascript File -->
 <script th:src="@{/javascript/custom.js}"></script>
 

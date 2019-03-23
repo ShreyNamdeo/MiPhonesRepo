@@ -61,4 +61,11 @@ public class ProductServices {
         });
         return finalMediaList;
     }
+
+    public List<ProductDto> getAllProductsWithMedia() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDto> productDtos = new ArrayList<>();
+        products.forEach(product -> productDtos.add(new ProductDto(product,getTopImageForProduct(product))));
+        return productDtos;
+    }
 }

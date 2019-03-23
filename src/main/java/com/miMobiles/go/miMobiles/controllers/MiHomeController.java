@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.DefaultValue;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by shrey on 2/10/2019.
  */
 @Controller
 public class MiHomeController {
-    private  static String title = "Digital Sunrisers";
+    private  static String title = "DigitalSunrisers.com";
     @Autowired
     private ProductServices productServices;
 
@@ -39,6 +40,8 @@ public class MiHomeController {
     @RequestMapping(value = "/adminProductList")
     public String adminProductList(Model model){
         model.addAttribute("title",title);
+        List<ProductDto> products = productServices.getAllProductsWithMedia();
+        model.addAttribute("productList",products);
         return "AdminProductList";
     }
 
@@ -80,12 +83,15 @@ public class MiHomeController {
     @RequestMapping(value = "/addProduct")
     public String addProduct(Model model){
         model.addAttribute("title",title);
+        model.addAttribute("uuid", UUID.randomUUID());
         return "addProduct";
     }
 
     @RequestMapping(value = "/products")
     public String products(Model model){
         model.addAttribute("title",title);
+        List<ProductDto> products = productServices.getAllProductsWithMedia();
+        model.addAttribute("productList",products);
         return "products";
     }
 }

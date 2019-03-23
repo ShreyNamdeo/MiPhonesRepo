@@ -61,9 +61,9 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <!--<a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>-->
+            <a href="/"><img src="img/logo.png" alt="" title="" /></img></a>
             <!-- Uncomment below if you prefer to use a text image -->
-            <h1><a href="#hero">Gadget-Meter</a></h1>
+            <!--<h1><a href="#hero">Gadget-Meter</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
@@ -90,7 +90,7 @@
             <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-12">
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control search-field" placeholder="Search">
+                        <input type="text" class="form-control search-field" placeholder="Search product by name" id="filter-text" name="filter-text">
                         <div class="input-group-btn">
                             <button class="btn btn-default search-field-icon" type="submit">
                                 <i class="fas fa-search"></i>
@@ -102,7 +102,7 @@
         </div>
         <div class="row">
             <div class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10">
-                <div class="list-card">
+                <div class="list-card" data-name="Samsung Note Fold">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="media">
@@ -117,6 +117,7 @@
                                 <div class="media-body">
                                     <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                    <label>Created :</label><span>17-March-2019</span>
                                 </div>
                                 <div class="media-right media-middle">
                                     <a href="#">
@@ -133,7 +134,7 @@
                     </div>
 
                 </div>
-                <div class="list-card">
+                <div class="list-card" data-name="Mi Note 9">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="media">
@@ -146,7 +147,7 @@
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Mi Note 9</strong></h4>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                                 </div>
                                 <div class="media-right media-middle">
@@ -164,7 +165,7 @@
                     </div>
 
                 </div>
-                <div class="list-card">
+                <div class="list-card" data-name="Sony Xperia">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="media">
@@ -177,7 +178,7 @@
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Sony Xperia</strong></h4>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                                 </div>
                                 <div class="media-right media-middle">
@@ -195,7 +196,7 @@
                     </div>
 
                 </div>
-                <div class="list-card">
+                <div class="list-card" data-name="Motorola G4">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="media">
@@ -208,7 +209,7 @@
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Samsung Note Fold</strong></h4>
+                                    <h4 class="media-heading"><strong style="text-transform:uppercase;">Motorola G4</strong></h4>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                                 </div>
                                 <div class="media-right media-middle">
@@ -267,7 +268,21 @@
 <script th:src="@{/lib/wow/wow.min.js}"></script>
 <script th:src="@{/lib/stickyjs/sticky.js}"></script>
 <script th:src="@{/lib/easing/easing.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("body").on('keyup','#filter-text',function(e){
+            e.preventDefault();
+            var txt=$('#“filter-text').val();
+            var regEx = new RegExp($.map($(this).val().trim().split(' '), function(v) {
+                    return '(?=.*?' + v + ')';
+                }).join(''), 'i');
 
+            $('.list-card').hide().filter(function() {
+                return regEx.exec($(this).text());
+            }).show();
+        });
+    });
+</script>
 <!-- Template Specisifc Custom Javascript File -->
 <script th:src="@{/javascript/custom.js}"></script>
 

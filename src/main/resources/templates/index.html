@@ -134,14 +134,6 @@ Porfolio Section
         </div>
 
         <div class="row">
-            <div class="col-md-3">
-                <a class="portfolio-item" style="background-image: url(img/portfolio-1.jpg);" href="">
-                    <div class="details">
-                        <h4>Portfolio 1</h4>
-                        <span>Alored dono par</span>
-                    </div>
-                </a>
-            </div>
             <div class="col-md-3" th:each="prod : ${productList}">
                 <a class="portfolio-item" th:style="'background-image: url('+${prod.productMedias[0].url}+');background-size: contain;'" th:href="'/productDetails?product='+${prod.productId}">
                     <div class="details">
@@ -350,7 +342,6 @@ Contact Section
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

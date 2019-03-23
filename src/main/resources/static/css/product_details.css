@@ -429,4 +429,18 @@ img {
         height : 245px;
     }
 }
+.mobile-visible{
+    display:none !important;
+}
+.desktop-visible{
+    display:block !important;
+}
+@media (max-width: 991px){
+    .mobile-visible{
+        display:block !important;
+    }
+    .desktop-visible{
+        display:none !important;
+    }
+}
 /*# sourceMappingURL=style.css.map */
