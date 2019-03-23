@@ -1,7 +1,9 @@
 package com.miMobiles.go.miMobiles.repositories;
 
+import com.miMobiles.go.miMobiles.models.Product;
 import com.miMobiles.go.miMobiles.models.ProductImage;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

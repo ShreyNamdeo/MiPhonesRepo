@@ -18,4 +18,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query("SELECT p from Product p WHERE p.productId != :productId")
     List<Product> findAllExcept(@Param("productId") String productId);
+
+    List<Product> findTop8ByOrderByCreatedDesc();
 }

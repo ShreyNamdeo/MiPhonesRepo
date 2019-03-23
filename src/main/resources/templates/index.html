@@ -38,6 +38,11 @@
     <!-- Main Stylesheet File -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
 
+    <!--Icon-->
+    <!--<link rel="icon" th:href="@{/img/icon.png}" sizes="16x16 32x32" type="image/png">-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <!-- Custom style sheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -137,14 +142,22 @@ Porfolio Section
                     </div>
                 </a>
             </div>
+            <div class="col-md-3" th:each="prod : ${productList}">
+                <a class="portfolio-item" th:style="'background-image: url('+${prod.productMedias[0].url}+');background-size: contain;'" th:href="'/productDetails?product='+${prod.productId}">
+                    <div class="details">
+                        <h4 th:text="${prod.productName}"></h4>
+                        <span th:text="${prod.status}"></span>
+                    </div>
+                </a>
+            </div>
 
-            <div class="col-md-3">
+            <!--<div class="col-md-3">
                 <a class="portfolio-item" style="background-image: url(img/portfolio-2.jpg);" href="">
                     <div class="details">
                         <h4>Portfolio 2</h4>
                         <span>Alored dono par</span>
                     </div>
-                </a>
+                </a>th:style="'background-image: url('+${prod.productMedias.get(0).url}+');'"
             </div>
 
             <div class="col-md-3">
@@ -199,7 +212,7 @@ Porfolio Section
                         <span>Alored dono par</span>
                     </div>
                 </a>
-            </div>
+            </div>-->
         </div>
         <div class="row">
             <div class="col-md-12" style="text-align:center;">

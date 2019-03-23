@@ -1,5 +1,6 @@
 package com.miMobiles.go.miMobiles.services;
 
+import com.miMobiles.go.miMobiles.dto.ProductDto;
 import com.miMobiles.go.miMobiles.dto.ProductMediaDto;
 import com.miMobiles.go.miMobiles.models.Product;
 import com.miMobiles.go.miMobiles.models.ProductImage;
@@ -41,5 +42,23 @@ public class ProductServices {
             productMediaDtos.add(new ProductMediaDto(productMediaList.get(i),i+1));
         }
         return productMediaDtos;
+    }
+
+    public List<ProductDto> getTop8Products() {
+        List<Product> products = productRepository.findTop8ByOrderByCreatedDesc();
+        List<ProductDto> productDtos = new ArrayList<>();
+        products.forEach(product -> productDtos.add(new ProductDto(product,getTopImageForProduct(product))));
+        return productDtos;
+    }
+
+    private List<ProductMediaDto> getTopImageForProduct(Product product) {
+        List<ProductMediaDto> finalMediaList = new ArrayList<>();
+        List<ProductImage> productMediaList = productImageRepository.findByProductDbId(product.getId());
+        productMediaList.forEach(productImage -> {
+            if (finalMediaList.size() == 0 && productImage.getMediaType().equals(ProductImage.mediaTypes.IMAGE.name())){
+                finalMediaList.add(new ProductMediaDto(productImage,0));
+            }
+        });
+        return finalMediaList;
     }
 }

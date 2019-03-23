@@ -397,6 +397,7 @@ img {
 .product-media-image{
     height : 400px;
     width : 100%;
+    object-fit: contain !important;
 }
 .product-media-video{
     height : 395px;

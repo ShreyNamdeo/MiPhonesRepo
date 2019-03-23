@@ -1,147 +1,116 @@
-package com.miMobiles.go.miMobiles.models;
+package com.miMobiles.go.miMobiles.dto;
 
-import javax.persistence.*;
+import com.miMobiles.go.miMobiles.models.Product;
+
 import java.util.Date;
+import java.util.List;
 
 /**
- * Created by shrey on 3/14/2019.
+ * Created by shrey on 3/23/2019.
  */
-@Entity
-@Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+public class ProductDto {
     private Long id;
 
-    @Column(name = "product_id")
     private String productId;
 
-    @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "network_technology")
     private String networkTechnology;
 
-    @Column(name = "announced")
     private String announced;
 
-    @Column(name = "status")
     private String status;
 
-    @Column(name = "body_length")
     private int bodyLength;
 
-    @Column(name = "body_width")
     private int bodyWidth;
 
-    @Column(name = "body_height")
     private int bodyHeight;
 
-    @Column(name = "weight")
     private float weight;
 
-    @Column(name = "sim_type")
     private String simType;
 
-    @Column(name = "display_type")
     private String displayType;
 
-    @Column(name = "display_size")
     private String displaySize;
 
-    @Column(name = "resolution")
     private String resolution;
 
-    @Column(name = "colors")
     private String colors;
 
-    @Column(name = "price")
     private int price;
 
-    @Column(name = "battery_type")
     private String batteryType;
 
-    @Column(name = "battery_charging")
     private String batteryCharging;
 
-    @Column(name = "card_slot")
     private boolean cardSlot;
 
-    @Column(name = "internal_storage")
     private String internalStorage;
 
-    @Column(name = "loud_speaker")
     private boolean loudSpeaker;
 
-    @Column(name = "sound_3_5_mm_jack")
     private boolean mm35jack;
 
-    @Column(name = "sound_features")
     private String soundFeatures;
 
-    @Column(name = "wlan")
     private String wlan;
 
-    @Column(name = "bluetooth")
     private String bluetooth;
 
-    @Column(name = "gps")
     private String gps;
 
-    @Column(name = "nfc")
     private boolean nfc;
 
-    @Column(name = "radio")
     private boolean radio;
 
-    @Column(name = "usb")
     private String usb;
 
-    @Column(name = "os")
     private String os;
 
-    @Column(name = "chip_set")
     private String chipSet;
 
-    @Column(name = "cpu")
     private String cpu;
 
-    @Column(name = "gpu")
     private String gpu;
 
-    @Column(name = "main_camera_type")
     private String mainCameraType;
 
-    @Column(name = "main_camera_description")
     private String mainCameraDescription;
 
-    @Column(name = "main_camera_features")
     private String mainCameraFeatures;
 
-    @Column(name = "main_camera_video")
     private String mainCameraVideo;
 
-    @Column(name = "selfie_camera_type")
     private String selfieCameraType;
 
-    @Column(name = "selfie_camera_description")
     private String selfieCameraDescription;
 
-    @Column(name = "selfie_camera_features")
     private String selfieCameraFeatures;
 
-    @Column(name = "selfie_camera_video")
     private String selfieCameraVideo;
 
-    @Column(name = "other_sensors")
     private String otherSensors;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "created")
     private Date created;
+
+    private List<ProductMediaDto> productMedias;
+
+    public ProductDto(){}
+
+    public ProductDto(Product product,List<ProductMediaDto> productMedias){
+        this.id = product.getId();
+        this.productId = product.getProductId();
+        this.productName = product.getProductName();
+        this.networkTechnology = product.getNetworkTechnology();
+        this.announced = product.getAnnounced();
+        this.status = product.getStatus();
+        //TODO: add other variables as per requirement
+        this.productMedias = productMedias;
+    }
 
     public Long getId() {
         return id;
@@ -493,5 +462,13 @@ public class Product {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public List<ProductMediaDto> getProductMedias() {
+        return productMedias;
+    }
+
+    public void setProductMedias(List<ProductMediaDto> productMedias) {
+        this.productMedias = productMedias;
     }
 }

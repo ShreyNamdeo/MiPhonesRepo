@@ -1,5 +1,6 @@
 package com.miMobiles.go.miMobiles.controllers;
 
+import com.miMobiles.go.miMobiles.dto.ProductDto;
 import com.miMobiles.go.miMobiles.dto.ProductMediaDto;
 import com.miMobiles.go.miMobiles.models.Product;
 import com.miMobiles.go.miMobiles.services.ProductServices;
@@ -17,13 +18,15 @@ import java.util.List;
  */
 @Controller
 public class MiHomeController {
-    private  static String title = "Gadget-Meter Studios";
+    private  static String title = "Digital Sunrisers";
     @Autowired
     private ProductServices productServices;
 
     @RequestMapping(value = "")
     public String index(Model model){
         model.addAttribute("title",title);
+        List<ProductDto> top8Products = productServices.getTop8Products();
+        model.addAttribute("productList",top8Products);
         return "index";
     }
 
