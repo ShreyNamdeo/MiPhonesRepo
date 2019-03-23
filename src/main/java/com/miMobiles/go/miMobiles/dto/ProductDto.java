@@ -108,6 +108,8 @@ public class ProductDto {
         this.networkTechnology = product.getNetworkTechnology();
         this.announced = product.getAnnounced();
         this.status = product.getStatus();
+        this.created = product.getCreated();
+        this.description = product.getDescription();
         //TODO: add other variables as per requirement
         this.productMedias = productMedias;
     }
