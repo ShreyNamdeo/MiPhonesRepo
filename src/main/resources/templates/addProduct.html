@@ -41,9 +41,11 @@
     <link th:href="@{/css/fileUpload.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
+    <!--<link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">-->
+    <link th:href="@{/css/plugin-uploadfile.css}" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+    <script th:src="@{/javascript/jquery.uploadfile.min.js}"></script>
+   <!-- <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>-->
     <!-- =======================================================
       Theme Name: Imperial
       Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
@@ -61,9 +63,9 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <!--<a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>-->
+            <a href="#hero"><img src="img/finallogodesign.png" alt="" title="" /></img></a>
             <!-- Uncomment below if you prefer to use a text image -->
-            <h1><a href="#hero">Gadget-Meter</a></h1>
+            <!--<h1><a href="#hero">Gadget-Meter</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
@@ -150,14 +152,6 @@
         <h4>Price (&#8377;)</h4>
         <p><input placeholder="Price of product" type="number" oninput="this.className = ''" name="display-type"></p>
 
-        <!-- Image upload code starts here  -->
-        <div id="fileuploader">Upload</div>
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                <a class="btn btn-round add-media" id="imageUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload images</a>
-            </div>
-        </div>
-        <!-- Image upload code ends here  -->
 
     </div>
     <div class="tab">
@@ -295,52 +289,56 @@
         <!--14. File Upload-->
         <h3><i class="fas fa-file-upload"></i>&nbsp;<label> Upload Media</label></h3>
         <h4>Upload Images</h4>
-        <!--<fieldset class="form-group">
-            <a class="btn btn-round add-media" href="javascript:void(0)" onclick="$('#pro-image').click()"><i class="fas fa-images"></i> Add Images</a> <small class="pull-right"> * select upto 5 files only</small>
-            <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
-        </fieldset>
-        <div class="preview-images-zone"></div>-->
-        <br>
+        <!-- Image upload code starts here  -->
+        <div id="fileuploader">Upload</div>
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                <a class="btn btn-round add-media" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload</a>
-            </div>
-            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-6">
-                <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                         aria-valuemin="0" aria-valuemax="100" id="uploadImageBar" style="width:0%">
-                        40% Complete (success)
-                    </div>
-                </div>
+                <a class="btn btn-round add-media" id="imageUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload images</a>
             </div>
         </div>
+        <!-- Image upload code ends here  -->
         <br><br>
         <h4>Add videos</h4>
         <p>
+        <!--    Upload video code starts here -->
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <a class="btn btn-round add-media" href="javascript:void(0)" onclick="$('#pro-video').click()"><i class="fas fa-cloud-upload-alt"></i> Upload from System</a>
-                <input type="file" id="pro-video" name="pro-video" style="display: none;" class="form-control">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="videofileuploader">Select Video</div>
+                <a class="btn btn-round add-media" id="videoUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload from System</a>
+                <!--<input type="file" id="pro-video" name="pro-video" style="display: none;" class="form-control">-->
             </div>
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"><h4>OR</h4></div>
-            <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+        </div>
+        <div class="row">
+            <div class="product-division">
+                <hr class="">
+                <span class="span-middle">OR</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="input-group" id="video-form">
-                        <span class="input-group-btn">
-                            <a href="javascript:void(0)" class="btn btn-default video-btn-1" type="button"><i class="fab fa-youtube"></i> Youtube or web link</a>
-                        </span>
+                    <span class="input-group-btn">
+                        <a href="javascript:void(0)" class="btn btn-default video-btn-1" type="button"><i class="fab fa-youtube"></i> Youtube video link</a>
+                    </span>
                     <input type="text" class="form-control video-text" placeholder="ex https://youtube.com/axsjgsdajh?autoplay=1" id="video" name="video">
                     <span class="input-group-btn">
-                            <a href="javascript:void(0)" class="btn btn-default video-btn-2" type="button">Add</a>
-                        </span>
-                </div>
-            </div>
-            <br>
-            <div class="col-lg-12">
-                <div class="video-responsive" id="video-box">
-
+                        <a href="javascript:void(0)" class="btn btn-default video-btn-2" type="button">Add</a>
+                    </span>
                 </div>
             </div>
         </div>
+        <br>
+        <div class="col-lg-12">
+            <div class="video-responsive" id="video-box">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <a class="btn btn-round add-media" id="youtubeVideoUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload from Youtube</a>
+            </div>
+        </div>
+        <!--    Upload video code ends here -->
         </p>
     </div>
     <div style="overflow:auto;">
@@ -415,7 +413,7 @@ Footer
 $(document).ready(function()
 {
 	var extraObj = $("#fileuploader").uploadFile({
-	    url:"/upload",
+	    url:"/upload/IMAGE",
         fileName:"myfile",
         acceptFiles:"image/*",
         showPreview:true,
@@ -429,6 +427,41 @@ $(document).ready(function()
 	$("#imageUpload").click(function()
     {
         extraObj.startUpload();
+    });
+
+    var extravideoObj = $("#videofileuploader").uploadFile({
+	    url:"/upload/VIDEO",
+        fileName:"myfile",
+        acceptFiles:"video/*",
+        showPreview:true,
+        maxFileCount:1,
+        previewHeight: "200px",
+        previewWidth: "200px",
+        sequential:true,
+        sequentialCount:1,
+        autoSubmit:false
+	});
+	$("#videoUpload").click(function()
+    {
+        extravideoObj.startUpload();
+    });
+
+    function getId(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            return 'error';
+        }
+    }
+
+    $(".video-btn-2").click(function(){
+        alert("here");
+        var myId = getId($("#video").val());
+        alert(myId);
+        $('#video-box').html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
     });
 });
 </script>

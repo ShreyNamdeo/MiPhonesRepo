@@ -1,11 +1,16 @@
 package com.miMobiles.go.miMobiles.services;
 
+import com.amazonaws.HttpMethod;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.ResponseHeaderOverrides;
 import com.miMobiles.go.miMobiles.models.AmazonService;
 import com.miMobiles.go.miMobiles.repositories.AmazonServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +21,21 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import static com.amazonaws.HttpMethod.GET;
+import static java.time.ZoneOffset.UTC;
 
 /**
  * Created by shrey on 3/27/2019.
  */
 @Service
 public class AWSServices {
-    private String endpointUrl = "https://s3.us-west-2.amazonaws.com";
     private String bucketName = "phoneapp-media-1";
+    private String endpointUrl = "https://"+bucketName+".s3.amazonaws.com";
 
     @Autowired
     private AmazonServiceRepository amazonServiceRepository;
@@ -40,6 +51,7 @@ public class AWSServices {
         AmazonService service = getCredsForS3("aws-s3");
         AWSCredentials credentials = new BasicAWSCredentials(service.getAccessKey(), service.getSecretKey());
         this.s3client = new AmazonS3Client(credentials);
+        this.s3client.setRegion(Region.getRegion(Regions.US_WEST_2));
     }
 
     private File convertMultiPartToFile(MultipartFile file) throws IOException {
@@ -55,22 +67,31 @@ public class AWSServices {
     }
 
     private void uploadFileTos3bucket(String fileName, File file) {
-        s3client.putObject(new PutObjectRequest(bucketName, fileName, file)
-                .withCannedAcl(CannedAccessControlList.PublicRead));
+        s3client.putObject(new PutObjectRequest(bucketName, fileName, file));
     }
 
-    public String uploadFile(MultipartFile multipartFile) {
+    public String uploadFile(MultipartFile multipartFile, String contentType) {
 
         String fileUrl = "";
+        String fileName = "";
         try {
             File file = convertMultiPartToFile(multipartFile);
-            String fileName = generateFileName(multipartFile);
+            fileName = generateFileName(multipartFile);
             fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
             uploadFileTos3bucket(fileName, file);
             file.delete();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fileUrl;
+        return generatePresignedUrl(fileName, GET, contentType).toString();
+    }
+
+    private URL generatePresignedUrl(String key, HttpMethod method, String contentType) {
+        GeneratePresignedUrlRequest createUrl = new GeneratePresignedUrlRequest(bucketName, key, method);
+        Date fifteenMinutesFromNow = Date.from(LocalDateTime.now(Clock.systemUTC()).plusMinutes(15).toInstant(UTC));
+        //createUrl.setExpiration(fifteenMinutesFromNow);
+        createUrl.setResponseHeaders(new ResponseHeaderOverrides().withContentType(contentType));
+        s3client.setRegion(Region.getRegion(Regions.US_WEST_2));
+        return s3client.generatePresignedUrl(createUrl);
     }
 }
