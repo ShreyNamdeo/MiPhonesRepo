@@ -38,7 +38,6 @@ public class FileUploadController {
                 System.out.println(fileaddr);
             }
         }
-
         // do stuff...
         return "addProduct";
     }
