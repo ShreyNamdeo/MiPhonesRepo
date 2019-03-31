@@ -1,5 +1,7 @@
 package com.miMobiles.go.miMobiles.models;
 
+import com.miMobiles.go.miMobiles.dto.ProductDto;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -142,6 +144,55 @@ public class Product {
 
     @Column(name = "created")
     private Date created;
+
+    public Product(){}
+
+    public Product(ProductDto productDto){
+        this.id = productDto.getId();
+        this.productId = productDto.getProductId();
+        this.productName = productDto.getProductName();
+        this.networkTechnology = productDto.getNetworkTechnology();
+        this.announced = productDto.getAnnounced();
+        this.status = productDto.getStatus();
+        this.bodyHeight = productDto.getBodyHeight();
+        this.bodyLength =productDto.getBodyLength();
+        this.bodyWidth = productDto.getBodyWidth();
+        this.weight =productDto.getWeight();
+        this.simType = productDto.getSimType();
+        this.displayType = productDto.getDisplayType();
+        this.displaySize =productDto.getDisplaySize();
+        this.resolution= productDto.getResolution();
+        this.colors = productDto.getColors();
+        this.price = productDto.getPrice();
+        this.batteryType = productDto.getBatteryType();
+        this.batteryCharging = productDto.getBatteryCharging();
+        this.cardSlot = productDto.isCardSlot();
+        this.internalStorage = productDto.getInternalStorage();
+        this.loudSpeaker = productDto.isLoudSpeaker();
+        this.mm35jack = productDto.isMm35jack();
+        this.soundFeatures = productDto.getSoundFeatures();
+        this.wlan = productDto.getWlan();
+        this.bluetooth = productDto.getBluetooth();
+        this.gps = productDto.getGps();
+        this.nfc = productDto.isNfc();
+        this.radio = productDto.isRadio();
+        this.usb =productDto.getUsb();
+        this.os = productDto.getOs();
+        this.chipSet = productDto.getChipSet();
+        this.cpu = productDto.getCpu();
+        this.gpu = productDto.getGpu();
+        this.mainCameraType = productDto.getMainCameraType();
+        this.mainCameraDescription = productDto.getMainCameraDescription();
+        this.mainCameraFeatures = productDto.getMainCameraFeatures();
+        this.mainCameraVideo = productDto.getMainCameraVideo();
+        this.selfieCameraType = productDto.getSelfieCameraType();
+        this.selfieCameraDescription = productDto.getSelfieCameraDescription();
+        this.selfieCameraFeatures = productDto.getSelfieCameraFeatures();
+        this.selfieCameraVideo = productDto.getSelfieCameraVideo();
+        this.otherSensors = productDto.getOtherSensors();
+        this.description = productDto.getDescription();
+        this.created = productDto.getCreated();
+    }
 
     public Long getId() {
         return id;

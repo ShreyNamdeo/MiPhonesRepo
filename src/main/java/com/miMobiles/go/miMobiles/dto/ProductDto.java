@@ -1,5 +1,7 @@
 package com.miMobiles.go.miMobiles.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.miMobiles.go.miMobiles.models.Product;
 
 import java.util.Date;
@@ -8,6 +10,9 @@ import java.util.List;
 /**
  * Created by shrey on 3/23/2019.
  */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductDto {
     private Long id;
 

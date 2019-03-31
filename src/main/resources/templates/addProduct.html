@@ -70,9 +70,9 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="D:/MiPhonesRepo/Imperial/about.html">About Us</a></li>
-                <li><a href="D:/MiPhonesRepo/Imperial/about.html#contact">Contact Us</a></li>
+                <li class="menu-active"><a href="/adminProductList">Home</a></li>
+                <li><a href="/adminProductList">About Us</a></li>
+                <li><a href="/adminProductList">Contact Us</a></li>
             </ul>
         </nav>
         <!-- #nav-menu-container -->
@@ -91,68 +91,68 @@
         </div>
 
         <h4>Product Identification Number</h4>
-        <p><input name="productId" readonly th:value="${uuid}"></p>
+        <p><input name="productId" readonly th:value="${uuid}" id="productId"></p>
+        <h4>Name</h4>
+        <p><input placeholder="Enter the name of product" oninput="this.className = ''" name="name" id="name"></p>
         <!--1. Network -->
         <h3><i class="fas fa-satellite"></i>&nbsp;<label> Network</label></h3>
         <h4>Technology</h4>
-        <p><input placeholder="Enter the technologies ex: GSM/LTE/HSPA" oninput="this.className = ''" name="technology"></p>
+        <p><input placeholder="Enter the technologies ex: GSM/LTE/HSPA" oninput="this.className = ''" name="technology" id="technology"></p>
 
         <!--2. Launch -->
         <h3><i class="fas fa-calendar-week"></i>&nbsp;<label> Launch</label></h3>
         <h4>Announced</h4>
-        <p><input placeholder="Enter the date at which product is announced" oninput="this.className = ''" name="announced"></p>
+        <p><input placeholder="Enter the date at which product is announced" oninput="this.className = ''" name="announced" id="announced"></p>
         <h4>Status</h4>
-        <p><input placeholder="Status of the product" oninput="this.className = ''" name="announced"></p>
+        <p><input placeholder="Status of the product" oninput="this.className = ''" name="status" id="status"></p>
 
         <!--3. Body-->
         <h3><i class="fas fa-mobile"></i>&nbsp;<label> Body</label></h3>
         <h4>Dimensions</h4>
         <p>
-            <input style="width:10% !important" type="number" placeholder="length" oninput="this.className = ''" name="length">
+            <input style="width:10% !important" type="number" placeholder="length" oninput="this.className = ''" name="length" id="length">
             <span>&nbsp;X&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="breath" oninput="this.className = ''" name="breath">
+            <input style="width:10% !important" type="number" placeholder="breath" oninput="this.className = ''" name="breath" id="breath">
             <span>&nbsp;X&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="height" oninput="this.className = ''" name="height">
+            <input style="width:10% !important" type="number" placeholder="height" oninput="this.className = ''" name="height" id="height">
             <span>&nbsp;MM&nbsp;</span>
         </p>
         <h4>Weight</h4>
         <p>
-            <input style="width:10% !important" type="number" placeholder="weight" oninput="this.className = ''" name="weight">
+            <input style="width:10% !important" type="number" placeholder="weight" oninput="this.className = ''" name="weight" id="weight">
             <span>&nbsp;gm&nbsp;</span>
         </p>
         <h4>SIM</h4>
-        <p><input placeholder="Sim technology used" oninput="this.className = ''" name="announced"></p>
+        <p><input placeholder="Sim technology used" oninput="this.className = ''" name="simTechnology" id="simTechnology"></p>
 
         <!--4. Display-->
         <h3><i class="fas fa-mobile-alt"></i>&nbsp;<label> Display</label></h3>
         <h4>Type</h4>
-        <p><input placeholder="Define type of display" oninput="this.className = ''" name="display-type"></p>
+        <p><input placeholder="Define type of display" oninput="this.className = ''" name="display-type" id="displayType"></p>
         <h4>Size</h4>
         <p>
-            <input style="width:10% !important" type="number" placeholder="Screen Size" oninput="this.className = ''" name="size">
+            <input style="width:10% !important" type="number" placeholder="Screen Size" oninput="this.className = ''" name="size" id="displaySize">
             <span>&nbsp;Inches&nbsp;</span>
         </p>
 
         <h4>Resolution</h4>
         <p>
-            <input style="width:10% !important" type="number" placeholder="X-axis" oninput="this.className = ''" name="pixx">
+            <input style="width:10% !important" type="number" placeholder="X-axis" oninput="this.className = ''" name="pixx" id="pixx">
             <span>&nbsp;X&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="Y-axis" oninput="this.className = ''" name="pixy">
+            <input style="width:10% !important" type="number" placeholder="Y-axis" oninput="this.className = ''" name="pixy" id="pixy">
             <span>&nbsp;Pixels&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="A" oninput="this.className = ''" name="resA">
+            <input style="width:10% !important" type="number" placeholder="A" oninput="this.className = ''" name="resA" id="resA">
             <span>&nbsp;:&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="B" oninput="this.className = ''" name="resB">
+            <input style="width:10% !important" type="number" placeholder="B" oninput="this.className = ''" name="resB" id="resB">
             <span>&nbsp;Resolution&nbsp;</span>
-            <input style="width:30% !important" placeholder="Description" oninput="this.className = ''" name="res-description">
+            <input style="width:30% !important" placeholder="Description" oninput="this.className = ''" name="res-description" id="resDescription">
         </p>
         <!--5. Misc-->
         <h3><i class="fas fa-info-circle"></i>&nbsp;<label> Misc</label></h3>
         <h4>Colors</h4>
-        <p><input placeholder="Colors available" oninput="this.className = ''" name="display-type"></p>
+        <p><input placeholder="Colors available" oninput="this.className = ''" name="colors" id="colors"></p>
         <h4>Price (&#8377;)</h4>
-        <p><input placeholder="Price of product" type="number" oninput="this.className = ''" name="display-type"></p>
-
-
+        <p><input placeholder="Price of product" type="number" oninput="this.className = ''" name="price" id="price"></p>
     </div>
     <div class="tab">
         <!-- Highlights -->
@@ -163,61 +163,61 @@
         <!--6. Platform-->
         <h3><i class="fab fa-android"></i>&nbsp;<label> Platform</label></h3>
         <h4>OS</h4>
-        <p><input placeholder="Android version description" oninput="this.className = ''" name="os"></p>
+        <p><input placeholder="Android version description" oninput="this.className = ''" name="os" id="os"></p>
         <h4>Chipset</h4>
-        <p><input placeholder="Chip set used in device" oninput="this.className = ''" name="chipset"></p>
+        <p><input placeholder="Chip set used in device" oninput="this.className = ''" name="chipset" id="chipset"></p>
         <h4>CPU</h4>
-        <p><input placeholder="CPU description" oninput="this.className = ''" name="cpu"></p>
+        <p><input placeholder="CPU description" oninput="this.className = ''" name="cpu" id="cpu"></p>
         <h4>GPU</h4>
-        <p><input placeholder="GPU description" oninput="this.className = ''" name="gpu"></p>
+        <p><input placeholder="GPU description" oninput="this.className = ''" name="gpu" id="gpu"></p>
 
         <!--7. Main Camera -->
         <h3><i class="fas fa-video"></i>&nbsp;<label> Main Camera</label></h3>
         <h4>Type <!--Type--></h4>
         <p>
-            <select class="form-control">
-                <option value="Single">Single</option>
+            <select class="form-control" id="mainCameraType">
+                <option value="Single" selected>Single</option>
                 <option value="Dual">Dual</option>
                 <option value="Triple">Triple</option>
                 <option value="Multi">Multi</option>
             </select>
         </p>
-        <p><input placeholder="Camera description" oninput="this.className = ''" name="main-camera-description"></p>
+        <p><input placeholder="Camera description" oninput="this.className = ''" name="main-camera-description" id="mainCameraDescription"></p>
         <h4>Feature</h4>
-        <p><input placeholder="Main camera features" oninput="this.className = ''" name="main-camera-features"></p>
+        <p><input placeholder="Main camera features" oninput="this.className = ''" name="main-camera-features" id="mainCameraFeatures"></p>
         <h4>video</h4>
         <p>
-            <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="main-camera-video-resolution">
+            <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="main-camera-video-resolution" id="mainCameraVideoResolution">
             <span>&nbsp;p @&nbsp;</span>
-            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="main-camera-video-framerate">
+            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="main-camera-video-framerate" id="mainCameraFramerate">
             <span>&nbsp;fps&nbsp;</span>
         </p>
         <!--8. Selfie Camera -->
         <h3><i class="fas fa-camera"></i>&nbsp;<label> Selfie Camera</label></h3>
         <h4>Type <!--Type--></h4>
         <p>
-            <select class="form-control">
-                <option value="Single">Single</option>
+            <select class="form-control" id="selfieCameraType">
+                <option value="Single" selected>Single</option>
                 <option value="Dual">Dual</option>
                 <option value="Triple">Triple</option>
                 <option value="Multi">Multi</option>
             </select>
         </p>
-        <p><input placeholder="Camera description" oninput="this.className = ''" name="selfie-camera-description"></p>
+        <p><input placeholder="Camera description" oninput="this.className = ''" name="selfie-camera-description" id="selfieCameraDescription"></p>
         <h4>Feature</h4>
-        <p><input placeholder="Main camera features" oninput="this.className = ''" name="selfie-camera-features"></p>
+        <p><input placeholder="Main camera features" oninput="this.className = ''" name="selfie-camera-features" id="selfieCameraFeature"></p>
         <h4>video</h4>
         <p>
-            <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="selfie-camera-video-resolution">
+            <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="selfie-camera-video-resolution" id="selfieCameraVideoResolution">
             <span>&nbsp;p @&nbsp;</span>
-            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="selfie-camera-video-framerate">
+            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="selfie-camera-video-framerate" id="selfieCameraVideoFramerate">
             <span>&nbsp;fps&nbsp;</span>
         </p>
         <!--9. Features-->
         <h3><i class="fab fa-elementor"></i>&nbsp;<label> Features</label></h3>
         <h4>Sensors</h4>
         <p>
-            <textarea style="width:100%;" rows="4" placeholder="Add additional sensors" oninput="this.className = ''" name="features-sensors">
+            <textarea style="width:100%;" rows="4" placeholder="Add additional sensors" oninput="this.className = ''" name="features-sensors" id="featureSensors">
             </textarea>
         </p>
     </div>
@@ -230,55 +230,60 @@
         <!--10. Battery-->
         <h3><i class="fas fa-battery-full"></i>&nbsp;<label> Battery</label></h3>
         <h4>Type</h4>
-        <p><input placeholder="Specify battery type" oninput="this.className = ''" name="battery-type"></p>
+        <p><input placeholder="Specify battery type" oninput="this.className = ''" name="battery-type" id="batteryType"></p>
         <h4>Charging</h4>
-        <p><input placeholder="Specify charging type" oninput="this.className = ''" name="battery-charging"></p>
+        <p><input placeholder="Specify charging type" oninput="this.className = ''" name="battery-charging" id="batteryCharging"></p>
         <!--11. Memory-->
         <h3><i class="fas fa-sd-card"></i>&nbsp;<label> Memory</label></h3>
         <h4>Card slot</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="cardslot" checked>&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="cardslot">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="cardslot" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="cardslot" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Internal</h4>
-        <p><input placeholder="Specify internal storage" oninput="this.className = ''" name="internal-storage"></p>
+        <p><input placeholder="Specify internal storage" oninput="this.className = ''" name="internal-storage" id="internalStorage"></p>
         <!--12. Sound-->
         <h3><i class="fas fa-volume-up"></i>&nbsp;<label> Sound</label></h3>
         <h4>Loudspeaker</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="loudspeaker" checked>&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="loudspeaker">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="loudspeaker" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="loudspeaker" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>3.5MM Jack</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="jack" checked>&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="jack">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="jack" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="jack" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Features</h4>
         <p>
-            <textarea style="width:100%;" rows="4" placeholder="Add additional specifications for sound" oninput="this.className = ''" name="features-sound">
+            <textarea style="width:100%;" rows="4" placeholder="Add additional specifications for sound" oninput="this.className = ''" name="features-sound" id="soundFeatures">
             </textarea>
         </p>
         <!--13. Communications-->
         <h3><i class="fas fa-satellite-dish"></i>&nbsp;<label> Communication</label></h3>
         <h4>WLAN</h4>
-        <p><input placeholder="Specify WLAN technology ex Wi-Fi 802.11" oninput="this.className = ''" name="wlan"></p>
+        <p><input placeholder="Specify WLAN technology ex Wi-Fi 802.11" oninput="this.className = ''" name="wlan" id="wlan"></p>
         <h4>Bluetooth</h4>
-        <p><input placeholder="Specify Bluetooth technology ex 5.0, A2DP" oninput="this.className = ''" name="bluetooth"></p>
+        <p><input placeholder="Specify Bluetooth technology ex 5.0, A2DP" oninput="this.className = ''" name="bluetooth" id="bluetooth"></p>
         <h4>GPS</h4>
-        <p><input placeholder="Specify GPS technology ex A-GPS, GLONASS" oninput="this.className = ''" name="GPS"></p>
+        <p><input placeholder="Specify GPS technology ex A-GPS, GLONASS" oninput="this.className = ''" name="GPS" id="gps"></p>
         <h4>NFC</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="nfc" checked>&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="nfc">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="nfc" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="nfc" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Radio</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="radio" checked>&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="radio">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="radio" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="radio" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>USB</h4>
-        <p><input placeholder="Specify USB type ex Type-C 1.0" oninput="this.className = ''" name="usb"></p>
+        <p><input placeholder="Specify USB type ex Type-C 1.0" oninput="this.className = ''" name="usb" id="usb"></p>
+        <h4>Product Description</h4>
+        <p>
+            <textarea style="width:100%;" rows="4" placeholder="Add product description" oninput="this.className = ''" name="product-description" id="description">
+            </textarea>
+        </p>
     </div>
     <div class="tab">
         <!-- Media -->
