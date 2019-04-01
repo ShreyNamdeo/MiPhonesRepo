@@ -262,4 +262,10 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet author="phoneApp" id="10">
+        <renameColumn columnDataType="varchar(255)"
+                      newColumnName="media_key"
+                      oldColumnName="s3_key"
+                      tableName="product_images"/>
+    </changeSet>
 </databaseChangeLog>

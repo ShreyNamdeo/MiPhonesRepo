@@ -7,7 +7,6 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.ResponseHeaderOverrides;
@@ -71,22 +70,19 @@ public class AWSServices {
     }
 
     public String uploadFile(MultipartFile multipartFile, String contentType) {
-
-        String fileUrl = "";
         String fileName = "";
         try {
             File file = convertMultiPartToFile(multipartFile);
             fileName = generateFileName(multipartFile);
-            fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
             uploadFileTos3bucket(fileName, file);
             file.delete();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return generatePresignedUrl(fileName, GET, contentType).toString();
+        return fileName;
     }
 
-    private URL generatePresignedUrl(String key, HttpMethod method, String contentType) {
+    public URL generatePresignedUrl(String key, HttpMethod method, String contentType) {
         GeneratePresignedUrlRequest createUrl = new GeneratePresignedUrlRequest(bucketName, key, method);
         Date fifteenMinutesFromNow = Date.from(LocalDateTime.now(Clock.systemUTC()).plusMinutes(15).toInstant(UTC));
         //createUrl.setExpiration(fifteenMinutesFromNow);

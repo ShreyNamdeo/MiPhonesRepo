@@ -17,8 +17,8 @@ public class ProductImage {
     @Column(name = "product_db_id")
     private Long productDbId;
 
-    @Column(name = "s3_key")
-    private String s3Key;
+    @Column(name = "media_key")
+    private String mediaKey;
 
     @Column(name = "url")
     private String url;
@@ -45,12 +45,12 @@ public class ProductImage {
         this.productDbId = productDbId;
     }
 
-    public String getS3Key() {
-        return s3Key;
+    public String getMediaKey() {
+        return mediaKey;
     }
 
-    public void setS3Key(String s3Key) {
-        this.s3Key = s3Key;
+    public void setMediaKey(String mediaKey) {
+        this.mediaKey = mediaKey;
     }
 
     public String getUrl() {

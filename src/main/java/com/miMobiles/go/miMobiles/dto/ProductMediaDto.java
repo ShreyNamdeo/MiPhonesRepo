@@ -1,6 +1,11 @@
 package com.miMobiles.go.miMobiles.dto;
 
 import com.miMobiles.go.miMobiles.models.ProductImage;
+import com.miMobiles.go.miMobiles.services.AWSServices;
+import static com.amazonaws.HttpMethod.GET;
+import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.IMAGE;
+import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.VIDEO;
+import static com.miMobiles.go.miMobiles.models.ProductImage.videoType.YOUTUBE;
 
 /**
  * Created by shrey on 3/21/2019.
@@ -8,7 +13,7 @@ import com.miMobiles.go.miMobiles.models.ProductImage;
 public class ProductMediaDto {
     private Long id;
     private Long productDbId;
-    private String s3Key;
+    private String mediaKey;
     private String url;
     private String mediaType;
     private String videoType;
@@ -16,11 +21,20 @@ public class ProductMediaDto {
 
     public ProductMediaDto(){}
 
-    public ProductMediaDto(ProductImage productImage, int index){
+    public ProductMediaDto(ProductImage productImage, int index, AWSServices awsServices){
         this.id = productImage.getId();
         this.productDbId = productImage.getProductDbId();
-        this.s3Key = productImage.getS3Key();
-        this.url = productImage.getUrl();
+        this.mediaKey = productImage.getMediaKey();
+        if (productImage.getUrl() != null)
+            this.url = productImage.getUrl();
+        if (productImage.getUrl() == null && productImage.getMediaKey() != null){
+            if (productImage.getMediaType().equalsIgnoreCase(IMAGE.name()))
+                this.url = awsServices.generatePresignedUrl(productImage.getMediaKey(),GET, "image/jpeg").toString();
+            if (productImage.getMediaType().equalsIgnoreCase(VIDEO.name()) && !productImage.getVideoType().equalsIgnoreCase(YOUTUBE.name()))
+                this.url = awsServices.generatePresignedUrl(productImage.getMediaKey(),GET, "video/mp4").toString();
+            if (productImage.getMediaType().equalsIgnoreCase(VIDEO.name()) && productImage.getVideoType().equalsIgnoreCase(YOUTUBE.name()))
+                this.url = "https://www.youtube.com/embed/"+productImage.getMediaKey();
+        }
         this.mediaType = productImage.getMediaType();
         this.videoType = productImage.getVideoType();
         this.mediaSeq = index;
@@ -42,12 +56,12 @@ public class ProductMediaDto {
         this.productDbId = productDbId;
     }
 
-    public String getS3Key() {
-        return s3Key;
+    public String getMediaKey() {
+        return mediaKey;
     }
 
-    public void setS3Key(String s3Key) {
-        this.s3Key = s3Key;
+    public void setMediaKey(String mediaKey) {
+        this.mediaKey = mediaKey;
     }
 
     public String getUrl() {

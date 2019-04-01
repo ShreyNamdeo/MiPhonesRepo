@@ -12,11 +12,20 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.IMAGE;
+
 /**
  * Created by shrey on 3/17/2019.
  */
 @Service
 public class ProductServices {
+    AWSServices awsServices;
+
+    @Autowired
+    ProductServices(AWSServices awsServices){
+        this.awsServices = awsServices;
+    }
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -38,8 +47,15 @@ public class ProductServices {
     public List<ProductMediaDto> getAllMediaForProductById(Long productDbId){
         List<ProductImage> productMediaList = productImageRepository.findByProductDbId(productDbId);
         List<ProductMediaDto> productMediaDtos = new ArrayList<>();
-        for (int i=0;i<productMediaList.size();i++){
-            productMediaDtos.add(new ProductMediaDto(productMediaList.get(i),i+1));
+        if (productMediaList.size() > 0){
+            for (int i=0;i<productMediaList.size();i++){
+                productMediaDtos.add(new ProductMediaDto(productMediaList.get(i),i+1,awsServices));
+            }
+        }else {
+            ProductImage productImage = new ProductImage();
+            productImage.setUrl("img/mobilePlaceHolder.png");
+            productImage.setMediaType(IMAGE.name());
+            productMediaDtos.add(new ProductMediaDto(productImage,1,awsServices));
         }
         return productMediaDtos;
     }
@@ -54,11 +70,18 @@ public class ProductServices {
     private List<ProductMediaDto> getTopImageForProduct(Product product) {
         List<ProductMediaDto> finalMediaList = new ArrayList<>();
         List<ProductImage> productMediaList = productImageRepository.findByProductDbId(product.getId());
-        productMediaList.forEach(productImage -> {
-            if (finalMediaList.size() == 0 && productImage.getMediaType().equals(ProductImage.mediaTypes.IMAGE.name())){
-                finalMediaList.add(new ProductMediaDto(productImage,0));
-            }
-        });
+        if (productMediaList.size() > 0){
+            productMediaList.forEach(productImage -> {
+                if (finalMediaList.size() == 0 && productImage.getMediaType().equals(IMAGE.name())){
+                    finalMediaList.add(new ProductMediaDto(productImage,0,awsServices));
+                }
+            });
+        }else{
+            ProductImage productImage = new ProductImage();
+            productImage.setUrl("img/mobilePlaceHolder.png");
+            productImage.setMediaType(IMAGE.name());
+            finalMediaList.add(new ProductMediaDto(productImage,0,awsServices));
+        }
         return finalMediaList;
     }
 
