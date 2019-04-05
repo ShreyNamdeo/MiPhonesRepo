@@ -125,4 +125,8 @@ public class ProductService {
         }
         productImageRepository.save(productImage);
     }
+
+    public void saveVideoThumbnail(String videoName, String mediakey) {
+        productImageRepository.updateProductVideoSetThumbnail(videoName,mediakey);
+    }
 }

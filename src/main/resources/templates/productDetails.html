@@ -134,7 +134,8 @@
                             <li th:each="prodMedia : ${productMediaList}" th:class="${prodMedia.mediaSeq == 1}? 'active' ">
                                 <a th:data-target="${'#pic-'+prodMedia.mediaSeq}" data-toggle="tab">
                                     <img th:if="${prodMedia.mediaType == 'IMAGE'}" th:src="${prodMedia.url}" />
-                                    <img th:if="${prodMedia.mediaType == 'VIDEO'}" src="https://dumielauxepices.net/sites/default/files/video-icon-clipart-video-play-813419-5601839.png" />
+                                    <img th:if="${prodMedia.mediaType == 'VIDEO' and prodMedia.videoType == 'YOUTUBE'}" th:src="${prodMedia.mediaKey != NULL}? 'https://img.youtube.com/vi/'+${prodMedia.mediaKey}+'/0.jpg' : 'https://dumielauxepices.net/sites/default/files/video-icon-clipart-video-play-813419-5601839.png'" />
+                                    <img th:if="${prodMedia.mediaType == 'VIDEO' and prodMedia.videoType == 'UPLOAD'}" th:src="${prodMedia.mediaKey != NULL}? :https://dumielauxepices.net/sites/default/files/video-icon-clipart-video-play-813419-5601839.png" />
                                 </a>
                             </li>
                             <!--<li><a data-target="#pic-6" data-toggle="tab"><img src="https://dumielauxepices.net/sites/default/files/video-icon-clipart-video-play-813419-7278341.gif" /></a></li>-->

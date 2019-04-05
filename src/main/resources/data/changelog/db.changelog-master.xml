@@ -268,4 +268,9 @@
                       oldColumnName="s3_key"
                       tableName="product_images"/>
     </changeSet>
+    <changeSet author="phoneApp" id="11">
+        <addColumn tableName="product_images">
+            <column name="thumbnail_key" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

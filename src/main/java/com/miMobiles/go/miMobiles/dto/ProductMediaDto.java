@@ -2,6 +2,7 @@ package com.miMobiles.go.miMobiles.dto;
 
 import com.miMobiles.go.miMobiles.models.ProductImage;
 import com.miMobiles.go.miMobiles.services.AWSServices;
+
 import static com.amazonaws.HttpMethod.GET;
 import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.IMAGE;
 import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.VIDEO;

@@ -1,20 +1,22 @@
 package com.miMobiles.go.miMobiles.controllers;
+import com.amazonaws.HttpMethod;
 import com.miMobiles.go.miMobiles.models.Product;
 import com.miMobiles.go.miMobiles.models.ProductImage;
-import com.miMobiles.go.miMobiles.repositories.ProductImageRepository;
-import com.miMobiles.go.miMobiles.repositories.ProductRepository;
 import com.miMobiles.go.miMobiles.services.AWSServices;
 import com.miMobiles.go.miMobiles.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.Iterator;
 
+import static com.amazonaws.HttpMethod.GET;
 import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.IMAGE;
 import static com.miMobiles.go.miMobiles.models.ProductImage.mediaTypes.VIDEO;
 import static com.miMobiles.go.miMobiles.models.ProductImage.videoType.YOUTUBE;
@@ -22,7 +24,7 @@ import static com.miMobiles.go.miMobiles.models.ProductImage.videoType.YOUTUBE;
 /**
  * Created by shrey on 3/26/2019.
  */
-@Controller
+@RestController
 public class FileUploadController {
     private AWSServices awsServices;
 
@@ -35,7 +37,7 @@ public class FileUploadController {
     private ProductService productService;
 
     @RequestMapping(value="/upload/{mediaType}/product/{productId}", method= RequestMethod.POST)
-    public String handleFileUpload(@PathVariable("mediaType") String mediaType,@PathVariable("productId") String productId,
+    public String handleFileUpload(@PathVariable("mediaType") String mediaType, @PathVariable("productId") String productId,
                                    MultipartHttpServletRequest request){
         Product product = productService.findByProductId(productId);
         if (product != null){
@@ -47,12 +49,11 @@ public class FileUploadController {
                 if (mediaType.equalsIgnoreCase(IMAGE.name())) {
                     mediakey = awsServices.uploadFile(multipartFile,"image/jpeg");
                     productService.saveProductMedia(product.getId(),mediakey,IMAGE.name());
-                    System.out.println(mediakey);
                 }
                 if (mediaType.equalsIgnoreCase(ProductImage.mediaTypes.VIDEO.name())) {
                     mediakey = awsServices.uploadFile(multipartFile,"video/mp4");
                     productService.saveProductMedia(product.getId(),mediakey,VIDEO.name());
-                    System.out.println(mediakey);
+                    return "{\"mediaKey\":\""+mediakey+"\",\"mediaLink\":\""+awsServices.generatePresignedUrl(mediakey, GET,"video/mp4")+"\"}";
                 }
             }
         }
@@ -63,6 +64,18 @@ public class FileUploadController {
         Product product = productService.findByProductId(productId);
         if (product != null){
             productService.saveProductMedia(product.getId(),mediaKey, YOUTUBE.name());
+        }
+        return "addProduct";
+    }
+
+    @RequestMapping(value="/upload/VIDEO/{videoName}/thumbnail", method= RequestMethod.POST)
+    public String uploadVideoThumbnail(@PathVariable("videoName") String videoName,MultipartHttpServletRequest request){
+        Iterator<String> iterator = request.getFileNames();
+        while (iterator.hasNext()) {
+            String fileName = iterator.next();
+            MultipartFile multipartFile = request.getFile(fileName);
+            String mediakey = awsServices.uploadFile(multipartFile,"image/jpeg");
+            productService.saveVideoThumbnail(videoName,mediakey);
         }
         return "addProduct";
     }

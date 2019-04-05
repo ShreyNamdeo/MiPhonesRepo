@@ -312,6 +312,11 @@
                 <a class="btn btn-round add-media" id="videoUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload from System</a>
                 <!--<input type="file" id="pro-video" name="pro-video" style="display: none;" class="form-control">-->
             </div>
+            <div class="col-lg-12"></div>
+            <div class="col-lg-12">
+                <div class="video-responsive" id="upload-video-box">
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="product-division">
@@ -437,6 +442,7 @@ $(document).ready(function()
     var extravideoObj = $("#videofileuploader").uploadFile({
 	    url:"/upload/VIDEO/product/"+$("#productId").val(),
         fileName:"myfile",
+        multiple:false,
         acceptFiles:"video/*",
         showPreview:true,
         maxFileCount:1,
@@ -444,7 +450,16 @@ $(document).ready(function()
         previewWidth: "200px",
         sequential:true,
         sequentialCount:1,
-        autoSubmit:false
+        autoSubmit:false,
+        onSuccess:function(files,data,xhr,pd)
+        {
+            //files: list of files
+            //data: response from server
+            //xhr : jquer xhr object
+            var res = $.parseJSON(data);
+            alert("data is :"+res.mediaKey);
+            $("#upload-video-box").append("<video controls='controls' preload='metadata' id='videoOnUpload'><source src='"+res.mediaLink+"' type='video/mp4'></video><br><br><a class='btn btn-round add-media' onclick='shoot()' id='captureScreenShot'>Capture Screenshot</a><br><br><div id='output'></div><br><br><a class='btn btn-round add-media' id='uploadScreenshotButton' onclick='addTumbnailImage(\""+res.mediaKey+"\")' style='display:none;'>Upload Screenshot</a>");
+        }
 	});
 	$("#videoUpload").click(function()
     {

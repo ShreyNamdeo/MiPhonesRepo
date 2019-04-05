@@ -29,6 +29,9 @@ public class ProductImage {
     @Column(name = "video_type")
     private String videoType;
 
+    @Column(name = "thumbnail_key")
+    private String thumbnailKey;
+
     public Long getId() {
         return id;
     }
@@ -75,6 +78,14 @@ public class ProductImage {
 
     public void setVideoType(String videoType) {
         this.videoType = videoType;
+    }
+
+    public String getThumbnailKey() {
+        return thumbnailKey;
+    }
+
+    public void setThumbnailKey(String thumbnailKey) {
+        this.thumbnailKey = thumbnailKey;
     }
 
     public enum mediaTypes{

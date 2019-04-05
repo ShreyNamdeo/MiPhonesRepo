@@ -76,6 +76,12 @@ public class ProductServices {
                     finalMediaList.add(new ProductMediaDto(productImage,0,awsServices));
                 }
             });
+            if (finalMediaList.size() == 0){
+                ProductImage productImage = new ProductImage();
+                productImage.setUrl("img/mobilePlaceHolder.png");
+                productImage.setMediaType(IMAGE.name());
+                finalMediaList.add(new ProductMediaDto(productImage,0,awsServices));
+            }
         }else{
             ProductImage productImage = new ProductImage();
             productImage.setUrl("img/mobilePlaceHolder.png");

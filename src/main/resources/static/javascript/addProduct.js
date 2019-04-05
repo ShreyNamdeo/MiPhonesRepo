@@ -70,6 +70,81 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+var videoId = 'videoOnUpload';
+var scaleFactor = 0.25;
+var snapshots = [];
+
+/**
+ * Captures a image frame from the provided video element.
+ *
+ * @param {Video} video HTML5 video element from where the image frame will be captured.
+ * @param {Number} scaleFactor Factor to scale the canvas element that will be return. This is an optional parameter.
+ *
+ * @return {Canvas}
+ */
+function capture(video, scaleFactor) {
+	if(scaleFactor == null){
+		scaleFactor = 1;
+	}
+	var w = video.videoWidth * scaleFactor;
+	var h = video.videoHeight * scaleFactor;
+	var canvas = document.createElement('canvas');
+		canvas.width  = w;
+	    canvas.height = h;
+	var ctx = canvas.getContext('2d');
+		ctx.drawImage(video, 0, 0, w, h);
+    return canvas;
+}
+
+/**
+ * Invokes the <code>capture</code> function and attaches the canvas element to the DOM.
+ */
+function shoot(){
+    alert("shoot called");
+	var video  = document.getElementById(videoId);
+	var output = document.getElementById('output');
+	var canvas = capture(video, scaleFactor);
+		/*canvas.onclick = function(){
+			window.open(this.toDataURL());
+		};*/
+	snapshots.unshift(canvas);
+	output.innerHTML = '';
+	for(var i=0; i<1; i++){
+		output.append(snapshots[i]);
+	}
+	$("#uploadScreenshotButton").css("display","table");
+}
+function addTumbnailImage(videoName){
+    alert(videoName);
+    var canvas = document.createElement('canvas');
+    var dataURL = canvas.toDataURL();
+    var blobBin = atob(dataURL.split(',')[1]);
+    var array = [];
+    for(var i = 0; i < blobBin.length; i++) {
+        array.push(blobBin.charCodeAt(i));
+    }
+    var file=new Blob([new Uint8Array(array)], {type: 'image/png'});
+
+
+    var formdata = new FormData();
+    formdata.append("thumbnail.png", file);
+
+    alert(dataURL);
+    $.ajax({
+    type: "POST",
+    url: "/upload/VIDEO/"+videoName+"/thumbnail",
+    data: formdata,
+    processData: false,
+    contentType: false
+    }).done(function(o) {
+        console.log('saved');
+        // If you want the file to be visible in the browser
+        // - please modify the callback in javascript. All you
+        // need is to return the url to the file, you just saved
+        // and than put the image in your browser.
+    });
+}
 $(document).ready(function(){
     $("#nextBtn").click(function(){
         //alert("next clicked");
@@ -129,7 +204,6 @@ $(document).ready(function(){
             otherSensors : $("#featureSensors").val(),
             description : $("#description").val()
         }
-        alert(JSON.stringify(productData));
         var productDataJson = JSON.stringify(productData);
         $.ajax({
             type: 'PUT',
