@@ -115,10 +115,11 @@ function shoot(){
 	}
 	$("#uploadScreenshotButton").css("display","table");
 }
+//currently not in use
 function addTumbnailImage(videoName){
     alert(videoName);
     var canvas = document.createElement('canvas');
-    var dataURL = canvas.toDataURL();
+    var dataURL = canvas.toDataURL().replace("image/png", "image/octet-stream");
     var blobBin = atob(dataURL.split(',')[1]);
     var array = [];
     for(var i = 0; i < blobBin.length; i++) {
@@ -130,7 +131,7 @@ function addTumbnailImage(videoName){
     var formdata = new FormData();
     formdata.append("thumbnail.png", file);
 
-    alert(dataURL);
+    console.log(dataURL);
     $.ajax({
     type: "POST",
     url: "/upload/VIDEO/"+videoName+"/thumbnail",

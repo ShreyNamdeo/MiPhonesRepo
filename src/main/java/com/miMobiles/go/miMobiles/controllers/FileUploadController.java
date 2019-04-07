@@ -74,7 +74,7 @@ public class FileUploadController {
         while (iterator.hasNext()) {
             String fileName = iterator.next();
             MultipartFile multipartFile = request.getFile(fileName);
-            String mediakey = awsServices.uploadFile(multipartFile,"image/jpeg");
+            String mediakey = awsServices.uploadFile(multipartFile,"image/png");
             productService.saveVideoThumbnail(videoName,mediakey);
         }
         return "addProduct";

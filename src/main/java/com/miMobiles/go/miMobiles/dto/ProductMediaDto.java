@@ -19,6 +19,7 @@ public class ProductMediaDto {
     private String mediaType;
     private String videoType;
     private int mediaSeq;
+    private String thumbnailUrl;
 
     public ProductMediaDto(){}
 
@@ -31,8 +32,11 @@ public class ProductMediaDto {
         if (productImage.getUrl() == null && productImage.getMediaKey() != null){
             if (productImage.getMediaType().equalsIgnoreCase(IMAGE.name()))
                 this.url = awsServices.generatePresignedUrl(productImage.getMediaKey(),GET, "image/jpeg").toString();
-            if (productImage.getMediaType().equalsIgnoreCase(VIDEO.name()) && !productImage.getVideoType().equalsIgnoreCase(YOUTUBE.name()))
+            if (productImage.getMediaType().equalsIgnoreCase(VIDEO.name()) && !productImage.getVideoType().equalsIgnoreCase(YOUTUBE.name())){
                 this.url = awsServices.generatePresignedUrl(productImage.getMediaKey(),GET, "video/mp4").toString();
+                if (productImage.getThumbnailKey() != null)
+                this.thumbnailUrl = awsServices.generatePresignedUrl(productImage.getThumbnailKey(),GET, "image/png").toString();
+            }
             if (productImage.getMediaType().equalsIgnoreCase(VIDEO.name()) && productImage.getVideoType().equalsIgnoreCase(YOUTUBE.name()))
                 this.url = "https://www.youtube.com/embed/"+productImage.getMediaKey();
         }
@@ -95,5 +99,13 @@ public class ProductMediaDto {
 
     public void setMediaSeq(int mediaSeq) {
         this.mediaSeq = mediaSeq;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }

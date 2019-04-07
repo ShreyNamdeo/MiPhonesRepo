@@ -439,6 +439,8 @@ $(document).ready(function()
         extraObj.startUpload();
     });
 
+    var uploadedvideoName;
+    var extravideoThumbnailObj;
     var extravideoObj = $("#videofileuploader").uploadFile({
 	    url:"/upload/VIDEO/product/"+$("#productId").val(),
         fileName:"myfile",
@@ -457,8 +459,26 @@ $(document).ready(function()
             //data: response from server
             //xhr : jquer xhr object
             var res = $.parseJSON(data);
-            alert("data is :"+res.mediaKey);
-            $("#upload-video-box").append("<video controls='controls' preload='metadata' id='videoOnUpload'><source src='"+res.mediaLink+"' type='video/mp4'></video><br><br><a class='btn btn-round add-media' onclick='shoot()' id='captureScreenShot'>Capture Screenshot</a><br><br><div id='output'></div><br><br><a class='btn btn-round add-media' id='uploadScreenshotButton' onclick='addTumbnailImage(\""+res.mediaKey+"\")' style='display:none;'>Upload Screenshot</a>");
+            uploadedvideoName = res.mediaKey;
+            alert("data in var is :"+uploadedvideoName);
+            $("#upload-video-box").append("<video controls='controls' preload='metadata' id='videoOnUpload'><source src='"+res.mediaLink+"' type='video/mp4'></video><br><br><a class='btn btn-round add-media' onclick='shoot()' id='captureScreenShot'>Capture Screenshot</a><br><br><div id='output'></div><br><br><span style='color:red'>* Right click to save image and then upload as thumbnail </span> <div id='thumbnailuploader'>Upload thumbanail for video</div><a class='btn btn-round add-media thumbnailUpload' id='thumbnailUpload'>Upload</a>");
+            //<a class='btn btn-round add-media' id='uploadScreenshotButton' onclick='addTumbnailImage(\""+res.mediaKey+"\")' style='display:none;'>Upload Screenshot</a>
+            var extravideoThumbnailObj = $("#thumbnailuploader").uploadFile({
+                url:"/upload/VIDEO/"+uploadedvideoName+"/thumbnail",
+                fileName:"myfile",
+                acceptFiles:"image/*",
+                showPreview:true,
+                multiple:false,
+                previewHeight: "100px",
+                previewWidth: "100px",
+                sequential:true,
+                sequentialCount:1,
+                autoSubmit:false
+            });
+            $("#thumbnailUpload").click(function()
+            {
+                extravideoThumbnailObj.startUpload();
+            });
         }
 	});
 	$("#videoUpload").click(function()
