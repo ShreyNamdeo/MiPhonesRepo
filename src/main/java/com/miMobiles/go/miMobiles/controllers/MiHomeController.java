@@ -2,16 +2,22 @@ package com.miMobiles.go.miMobiles.controllers;
 
 import com.miMobiles.go.miMobiles.dto.ProductDto;
 import com.miMobiles.go.miMobiles.dto.ProductMediaDto;
+import com.miMobiles.go.miMobiles.dto.UserDto;
 import com.miMobiles.go.miMobiles.models.Product;
+import com.miMobiles.go.miMobiles.models.User;
 import com.miMobiles.go.miMobiles.services.ProductServices;
+import com.miMobiles.go.miMobiles.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.DefaultValue;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -22,6 +28,9 @@ public class MiHomeController {
     private  static String title = "DigitalSunrisers.com";
     @Autowired
     private ProductServices productServices;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "")
     public String index(Model model){
@@ -34,6 +43,7 @@ public class MiHomeController {
     @RequestMapping(value = "/login")
     public String login(Model model){
         model.addAttribute("title",title);
+        model.addAttribute("userDto", new UserDto());
         return "login";
     }
 
@@ -93,5 +103,17 @@ public class MiHomeController {
         List<ProductDto> products = productServices.getAllProductsWithMedia();
         model.addAttribute("productList",products);
         return "products";
+    }
+
+    @PostMapping("/loginUser")
+    public String loginUser(@ModelAttribute UserDto userDto){
+        System.out.println(userDto.getEmail());
+        Optional<User> user = userService.getUserByEmail(userDto.getEmail());
+        if (user.isPresent()){
+            User user1 = user.get();
+            if (user1.getPassword().equals(userDto.getPassword()))
+                return "redirect:/adminProductList";
+        }
+        return "redirect:/login";
     }
 }

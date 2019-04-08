@@ -1,12 +1,9 @@
 package com.miMobiles.go.miMobiles.controllers;
-import com.amazonaws.HttpMethod;
 import com.miMobiles.go.miMobiles.models.Product;
 import com.miMobiles.go.miMobiles.models.ProductImage;
 import com.miMobiles.go.miMobiles.services.AWSServices;
 import com.miMobiles.go.miMobiles.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

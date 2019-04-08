@@ -58,22 +58,20 @@
         </div>
         <div class="col-md-4 col-md-push-4 text-center">
             <div class="form">
-                <div id="errormessage"></div>
-                <form action="/adminProductList" method="post" role="form" class="contactForm">
+                <div id="errormessage"></div><!-- adminProductList -->
+                <form th:action="@{/loginUser}" th:object="${userDto}" method="post" role="form" class="contactForm">
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                        <input type="email" th:field="*{email}" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                         <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <input type="password" th:field="*{password}" class="form-control" name="password" id="password" placeholder="password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                         <div class="validation"></div>
                     </div>
                     <div class="text-center"><button type="submit">Login</button></div>
                 </form>
             </div>
         </div>
-
-    </div>
     </div>
 </section>
 
