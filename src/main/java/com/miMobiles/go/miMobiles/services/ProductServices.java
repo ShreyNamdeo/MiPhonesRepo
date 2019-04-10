@@ -97,4 +97,29 @@ public class ProductServices {
         products.forEach(product -> productDtos.add(new ProductDto(product,getTopImageForProduct(product))));
         return productDtos;
     }
+
+    public Product findByProductId(String productId) {
+        return productRepository.findByProductId(productId);
+    }
+
+    public void deleteProduct(String productId) {
+        Product product = findByProductId(productId);
+        List<ProductImage> productImageList = productImageRepository.findByProductDbId(product.getId());
+        productImageList.forEach(productImage -> {
+            if (productImage.getMediaType().equals(ProductImage.mediaTypes.IMAGE.name())){
+                if (productImage.getMediaKey() != null)
+                    awsServices.deleteByKey(productImage.getMediaKey());
+            }
+            if (productImage.getMediaType().equals(ProductImage.mediaTypes.VIDEO.name())){
+                if (productImage.getVideoType().equals(ProductImage.videoType.UPLOAD.name())){
+                    if (productImage.getMediaKey() != null)
+                        awsServices.deleteByKey(productImage.getMediaKey());
+                    if (productImage.getThumbnailKey() != null)
+                        awsServices.deleteByKey(productImage.getThumbnailKey());
+                }
+            }
+            productImageRepository.delete(productImage);
+        });
+        productRepository.delete(product);
+    }
 }

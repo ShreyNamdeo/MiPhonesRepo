@@ -80,7 +80,7 @@
 </header>
 <!-- #header -->
 
-<form id="regForm" action="/adminProductList">
+<form id="regForm" action="#" th:action="@{/adminProductList}" method="get" th:object="${productDto}">
     <h1>Add product</h1>
     <!-- One "tab" for each step in the form: -->
     <div class="tab">

@@ -93,6 +93,7 @@ public class MiHomeController {
     @RequestMapping(value = "/addProduct")
     public String addProduct(Model model){
         model.addAttribute("title",title);
+        model.addAttribute("productDto",new ProductDto());
         model.addAttribute("uuid", UUID.randomUUID());
         return "addProduct";
     }

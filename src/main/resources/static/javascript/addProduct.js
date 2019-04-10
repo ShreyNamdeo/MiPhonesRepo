@@ -12,7 +12,10 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
+    event.preventDefault();
     document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").type = "submit";
+    document.getElementById("nextBtn").classList.add("submitButton");
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
@@ -101,7 +104,7 @@ function capture(video, scaleFactor) {
  * Invokes the <code>capture</code> function and attaches the canvas element to the DOM.
  */
 function shoot(){
-    alert("shoot called");
+    //alert("shoot called");
 	var video  = document.getElementById(videoId);
 	var output = document.getElementById('output');
 	var canvas = capture(video, scaleFactor);
@@ -117,7 +120,7 @@ function shoot(){
 }
 //currently not in use
 function addTumbnailImage(videoName){
-    alert(videoName);
+    //alert(videoName);
     var canvas = document.createElement('canvas');
     var dataURL = canvas.toDataURL().replace("image/png", "image/octet-stream");
     var blobBin = atob(dataURL.split(',')[1]);
@@ -217,10 +220,27 @@ $(document).ready(function(){
         })
         .success(function(result) {
             console.log(result);
+
         })
         .error(function() {
             alert('Product update failed');
             console.log( arguments);
         });
+    });
+
+    $(document).on('click', "button.submitButton", function() {
+        if($("#nextBtn").attr("type") == "submit"){
+            $("#nextBtn").addClass("finalSubmit");
+            event.preventDefault();
+            //window.location = "/adminProductList"; $("#regForm").submit();
+        }
+    });
+    $(document).on('click', "button.finalSubmit", function() {
+        if($("#nextBtn").attr("type") == "submit"){
+            //alert("submitted");
+            event.preventDefault();
+            //window.location = "/adminProductList";
+            $("#regForm").submit();
+        }
     });
 });

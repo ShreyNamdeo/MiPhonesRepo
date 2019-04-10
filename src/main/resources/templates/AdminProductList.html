@@ -125,7 +125,7 @@
                                         <div class="media-object media-icon-right">
                                             <a th:href="'/productDetails?product='+${prod.productId}"><i class="fas fa-eye"></i></a>
                                             <i class="fas fa-pen-square"></i>
-                                            <i class="fas fa-trash"></i>
+                                            <a href="javascript:void(0)" th:id="${prod.productId}" onclick="deleteProduct(this.id)"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </a>
                                 </div>
@@ -191,6 +191,7 @@
 </script>
 <!-- Template Specisifc Custom Javascript File -->
 <script th:src="@{/javascript/custom.js}"></script>
+<script th:src="@{/javascript/DeleteProduct.js}"></script>
 
 </body>
 </html>

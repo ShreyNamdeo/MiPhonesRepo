@@ -7,6 +7,7 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.ResponseHeaderOverrides;
@@ -89,5 +90,9 @@ public class AWSServices {
         createUrl.setResponseHeaders(new ResponseHeaderOverrides().withContentType(contentType));
         s3client.setRegion(Region.getRegion(Regions.US_WEST_2));
         return s3client.generatePresignedUrl(createUrl);
+    }
+
+    public void deleteByKey(String key){
+        s3client.deleteObject(new DeleteObjectRequest(bucketName,key));
     }
 }
