@@ -498,7 +498,7 @@ $(document).ready(function()
     }
 
     $(".video-btn-2").click(function(){
-        alert("here");
+        //alert("here");
         var myId = getId($("#video").val());
         /*alert(myId);*/
         $('#video-box').html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
@@ -513,10 +513,11 @@ $(document).ready(function()
             headers: { 'Access-Control-Allow-Headers': 'x-requested-with' ,'Access-Control-Allow-Origin' : '*'}
         })
         .success(function(result) {
+            alert('Video added successfully');
             console.log(result);
         })
         .error(function() {
-            alert('Product update failed');
+            alert('Youtube video upload failed');
             console.log( arguments);
         });
     });

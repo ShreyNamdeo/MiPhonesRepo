@@ -273,4 +273,15 @@
             <column name="thumbnail_key" type="varchar(255)"/>
         </addColumn>
     </changeSet>
+    <changeSet author="phoneApp" id="12">
+        <modifyDataType columnName="body_length"
+                        newDataType="FLOAT"
+                        tableName="products"/>
+        <modifyDataType columnName="body_width"
+                        newDataType="FLOAT"
+                        tableName="products"/>
+        <modifyDataType columnName="body_height"
+                        newDataType="FLOAT"
+                        tableName="products"/>
+    </changeSet>
 </databaseChangeLog>

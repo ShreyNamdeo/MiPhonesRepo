@@ -26,13 +26,13 @@ public class ProductDto {
 
     private String status;
 
-    private int bodyLength;
+    private Float bodyLength;
 
-    private int bodyWidth;
+    private Float bodyWidth;
 
-    private int bodyHeight;
+    private Float bodyHeight;
 
-    private float weight;
+    private Float weight;
 
     private String simType;
 
@@ -167,27 +167,27 @@ public class ProductDto {
         this.status = status;
     }
 
-    public int getBodyLength() {
+    public float getBodyLength() {
         return bodyLength;
     }
 
-    public void setBodyLength(int bodyLength) {
+    public void setBodyLength(float bodyLength) {
         this.bodyLength = bodyLength;
     }
 
-    public int getBodyWidth() {
+    public float getBodyWidth() {
         return bodyWidth;
     }
 
-    public void setBodyWidth(int bodyWidth) {
+    public void setBodyWidth(float bodyWidth) {
         this.bodyWidth = bodyWidth;
     }
 
-    public int getBodyHeight() {
+    public float getBodyHeight() {
         return bodyHeight;
     }
 
-    public void setBodyHeight(int bodyHeight) {
+    public void setBodyHeight(float bodyHeight) {
         this.bodyHeight = bodyHeight;
     }
 

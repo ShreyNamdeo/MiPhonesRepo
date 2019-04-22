@@ -146,6 +146,7 @@
                                 <span class="span-right">Description</span>
                             </div>
                             <p th:text="*{description}"></p>
+                            <br>
                         </div>
                     </div>
                     <div class="details col-md-12">
@@ -275,7 +276,7 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading"><strong>Body</strong></h4>
-                                <div class="row"><div class="col-lg-4">Dimensions</div><div class="col-lg-8"><span th:text="*{bodyLength}"></span> x <span th:text="*{bodyWidth}"></span> x <span  th:text="*{bodyHeight}"></span > mm</div></div>
+                                <div class="row"><div class="col-lg-4">Dimensions</div><div class="col-lg-8"><span th:text="*{bodyLength}"></span> x <span th:text="*{bodyWidth}"></span> x <span  th:text="*{bodyHeight}"></span > cm</div></div>
                                 <div class="row"><div class="col-lg-4">Weight</div><div class="col-lg-8"><span th:text="*{weight}"></span> gm</div></div>
                                 <div class="row"><div class="col-lg-4">SIM</div><div class="col-lg-8" th:text="*{simType}"></div></div>
                             </div>
@@ -312,7 +313,7 @@
                             <div class="media-body">
                                 <h4 class="media-heading"><strong>Misc</strong></h4>
                                 <div class="row"><div class="col-lg-4">Colors</div><div class="col-lg-8" th:text="*{colors}"></div></div>
-                                <div class="row"><div class="col-lg-4">Price (&#8377;)</div><div class="col-lg-8">About <span th:text="*{price}"></span> </div></div>
+                                <div class="row"><div class="col-lg-4">Price (&#8377;)</div><div class="col-lg-8"><span th:text="*{price}"></span> (Approx) </div></div>
                             </div>
                         </div>
                     </div>

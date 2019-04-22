@@ -32,13 +32,13 @@ public class Product {
     private String status;
 
     @Column(name = "body_length")
-    private int bodyLength;
+    private float bodyLength;
 
     @Column(name = "body_width")
-    private int bodyWidth;
+    private float bodyWidth;
 
     @Column(name = "body_height")
-    private int bodyHeight;
+    private float bodyHeight;
 
     @Column(name = "weight")
     private float weight;
@@ -242,27 +242,27 @@ public class Product {
         this.status = status;
     }
 
-    public int getBodyLength() {
+    public float getBodyLength() {
         return bodyLength;
     }
 
-    public void setBodyLength(int bodyLength) {
+    public void setBodyLength(float bodyLength) {
         this.bodyLength = bodyLength;
     }
 
-    public int getBodyWidth() {
+    public float getBodyWidth() {
         return bodyWidth;
     }
 
-    public void setBodyWidth(int bodyWidth) {
+    public void setBodyWidth(float bodyWidth) {
         this.bodyWidth = bodyWidth;
     }
 
-    public int getBodyHeight() {
+    public float getBodyHeight() {
         return bodyHeight;
     }
 
-    public void setBodyHeight(int bodyHeight) {
+    public void setBodyHeight(float bodyHeight) {
         this.bodyHeight = bodyHeight;
     }
 

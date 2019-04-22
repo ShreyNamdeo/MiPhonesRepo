@@ -61,7 +61,8 @@ public class MiHomeController {
         Product product = productServices.getByProductId(productId);
         List<ProductMediaDto> productMediaList = productServices.getAllMediaForProductById(product.getId());
         List<Product> productsExceptSelected = productServices.getAllProductsExcept(productId);
-        model.addAttribute("displaySieInCm",String.format("%.2f", Float.parseFloat(product.getDisplaySize())*2.54));
+        //model.addAttribute("displaySieInCm",String.format("%.2f", Float.parseFloat(product.getDisplaySize())*2.54));
+        model.addAttribute("displaySieInCm",String.format("%.2f", Float.parseFloat(product.getDisplaySize())));
         model.addAttribute(product);
         model.addAttribute("productMediaList",productMediaList);
         model.addAttribute("prods",productsExceptSelected);
@@ -73,10 +74,10 @@ public class MiHomeController {
                                         @RequestParam("q2") @DefaultValue(value = " ") String productId2){
         model.addAttribute("title",title);
         Product product1 = productServices.getByProductId(productId1);
-        model.addAttribute("displaySie1InCm",String.format("%.2f", Float.parseFloat(product1.getDisplaySize())*2.54));
+        model.addAttribute("displaySie1InCm",String.format("%.2f", Float.parseFloat(product1.getDisplaySize())));
         List<ProductMediaDto> product1MediaList = productServices.getAllMediaForProductById(product1.getId());
         Product product2 = productServices.getByProductId(productId2);
-        model.addAttribute("displaySie2InCm",String.format("%.2f", Float.parseFloat(product2.getDisplaySize())*2.54));
+        model.addAttribute("displaySie2InCm",String.format("%.2f", Float.parseFloat(product2.getDisplaySize())));
         List<ProductMediaDto> product2MediaList = productServices.getAllMediaForProductById(product2.getId());
         model.addAttribute("product1",product1);
         model.addAttribute("product1MediaList",product1MediaList);
