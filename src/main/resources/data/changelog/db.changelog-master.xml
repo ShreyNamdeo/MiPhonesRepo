@@ -284,4 +284,15 @@
                         newDataType="FLOAT"
                         tableName="products"/>
     </changeSet>
+    <changeSet author="phoneApp" id="13">
+        <addColumn tableName="products">
+            <column name="network_2g_band" type="varchar(255)"/>
+            <column name="network_3g_band" type="varchar(255)"/>
+            <column name="network_4g_band" type="varchar(255)"/>
+            <column name="network_5g_band" type="varchar(255)"/>
+            <column name="network_speed" type="varchar(255)"/>
+            <column name="gprs" type="varchar(255)"/>
+            <column name="edge" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

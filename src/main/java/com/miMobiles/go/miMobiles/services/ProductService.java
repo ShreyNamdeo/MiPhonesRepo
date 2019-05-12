@@ -101,6 +101,18 @@ public class ProductService {
                 product.setOtherSensors(productDto.getOtherSensors());
             if (productDto.getDescription() != null)
                 product.setDescription(productDto.getDescription());
+            if (productDto.getNetwork2gBand() != null)
+                product.setNetwork2gBand(productDto.getNetwork2gBand());
+            if (productDto.getNetwork3gBand() != null)
+                product.setNetwork3gBand(productDto.getNetwork3gBand());
+            if (productDto.getNetwork4gBand() != null)
+                product.setNetwork4gBand(productDto.getNetwork4gBand());
+            if (productDto.getNetwork5gBand() != null)
+                product.setNetwork5gBand(productDto.getNetwork5gBand());
+            if (productDto.getNetworkSpeed() != null)
+                product.setNetworkSpeed(productDto.getNetworkSpeed());
+            product.setEdge(productDto.getEdge());
+            product.setGprs(productDto.getGprs());
             return  productRepository.save(product);
         }else{
             productDto.setCreated(new Date());

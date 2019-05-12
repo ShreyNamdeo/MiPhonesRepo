@@ -102,6 +102,20 @@ public class ProductDto {
 
     private Date created;
 
+    private String network2gBand;
+
+    private String network3gBand;
+
+    private String network4gBand;
+
+    private String network5gBand;
+
+    private String networkSpeed;
+
+    private String gprs;
+
+    private String edge;
+
     private List<ProductMediaDto> productMedias;
 
     public ProductDto(){}
@@ -477,5 +491,77 @@ public class ProductDto {
 
     public void setProductMedias(List<ProductMediaDto> productMedias) {
         this.productMedias = productMedias;
+    }
+
+    public void setBodyLength(Float bodyLength) {
+        this.bodyLength = bodyLength;
+    }
+
+    public void setBodyWidth(Float bodyWidth) {
+        this.bodyWidth = bodyWidth;
+    }
+
+    public void setBodyHeight(Float bodyHeight) {
+        this.bodyHeight = bodyHeight;
+    }
+
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public String getNetwork2gBand() {
+        return network2gBand;
+    }
+
+    public void setNetwork2gBand(String network2gBand) {
+        this.network2gBand = network2gBand;
+    }
+
+    public String getNetwork3gBand() {
+        return network3gBand;
+    }
+
+    public void setNetwork3gBand(String network3gBand) {
+        this.network3gBand = network3gBand;
+    }
+
+    public String getNetwork4gBand() {
+        return network4gBand;
+    }
+
+    public void setNetwork4gBand(String network4gBand) {
+        this.network4gBand = network4gBand;
+    }
+
+    public String getNetwork5gBand() {
+        return network5gBand;
+    }
+
+    public void setNetwork5gBand(String network5gBand) {
+        this.network5gBand = network5gBand;
+    }
+
+    public String getNetworkSpeed() {
+        return networkSpeed;
+    }
+
+    public void setNetworkSpeed(String networkSpeed) {
+        this.networkSpeed = networkSpeed;
+    }
+
+    public String getGprs() {
+        return gprs;
+    }
+
+    public void setGprs(String gprs) {
+        this.gprs = gprs;
+    }
+
+    public String getEdge() {
+        return edge;
+    }
+
+    public void setEdge(String edge) {
+        this.edge = edge;
     }
 }

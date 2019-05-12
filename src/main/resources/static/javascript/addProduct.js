@@ -162,6 +162,8 @@ $(document).ready(function(){
         var mainCameraVideoResolution = $("#mainCameraVideoResolution").val()+'p @'+$("#mainCameraFramerate").val()+' fps';
         var selfieCameraTypeVal = $("#selfieCameraType").children("option:selected").val();
         var selfieCameraVideoResolution = $("#selfieCameraVideoResolution").val()+'p @'+$("#selfieCameraVideoFramerate").val()+' fps';
+        var edgeValue = $("input[name='edge']:checked").val();
+        var gprsValue = $("input[name='gprs']:checked").val();
 
         event.preventDefault();
         var productData = {
@@ -206,7 +208,14 @@ $(document).ready(function(){
             selfieCameraFeatures : $("#selfieCameraFeature").val(),
             selfieCameraVideo : selfieCameraVideoResolution,
             otherSensors : $("#featureSensors").val(),
-            description : $("#description").val()
+            description : $("#description").val(),
+            network2gBand : $("#2gBand").val(),
+            network3gBand : $("#3gBand").val(),
+            network4gBand : $("#4gBand").val(),
+            network5gBand : $("#5gBand").val(),
+            networkSpeed : $("#speed").val(),
+            gprs : gprsValue,
+            edge : edgeValue
         }
         var productDataJson = JSON.stringify(productData);
         $.ajax({
