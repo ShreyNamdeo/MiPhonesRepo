@@ -99,6 +99,16 @@ public class MiHomeController {
         return "addProduct";
     }
 
+    @RequestMapping(value = "/editProduct")
+    public String editProduct(Model model,@RequestParam("product") @DefaultValue(value = " ") String productId ){
+        Product product = productServices.getByProductId(productId);
+        List<ProductMediaDto> productMediaList = productServices.getAllMediaForProductById(product.getId());
+        model.addAttribute("title",title);
+        model.addAttribute("productDto",new ProductDto(product,productMediaList));
+        //model.addAttribute("uuid", UUID.randomUUID());
+        return "editProduct";
+    }
+
     @RequestMapping(value = "/products")
     public String products(Model model){
         model.addAttribute("title",title);

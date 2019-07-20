@@ -124,7 +124,7 @@
                                         <!--<i class="media-object fa fa-satellite">-->
                                         <div class="media-object media-icon-right">
                                             <a th:href="'/productDetails?product='+${prod.productId}"><i class="fas fa-eye"></i></a>
-                                            <i class="fas fa-pen-square"></i>
+                                            <a th:href="'/editProduct?product='+${prod.productId}"><i class="fas fa-pen-square"></i></a>
                                             <a href="javascript:void(0)" th:id="${prod.productId}" onclick="deleteProduct(this.id)"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </a>

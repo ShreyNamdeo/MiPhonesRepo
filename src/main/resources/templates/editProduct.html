@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="utf-8">
+    <title th:text="${title}"></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+    <meta property="og:title" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="">
+
+    <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+
+    <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+    <link href="favicon.ico" rel="shortcut icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.min.css}"/>
+
+    <!-- Libraries CSS Files -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/animate-css/animate.min.css}" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/addProduct.css}" rel="stylesheet">
+    <link th:href="@{/css/fileUpload.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!--<link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">-->
+    <link th:href="@{/css/plugin-uploadfile.css}" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script th:src="@{/javascript/jquery.uploadfile.min.js}"></script>
+    <!-- <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>-->
+    <!-- =======================================================
+      Theme Name: Imperial
+      Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+      Author: BootstrapMade.com
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+<body>
+<div id="preloader"></div>
+
+<!--==========================
+  Header Section
+  ============================-->
+<header id="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <a href="#hero"><img src="img/finallogodesign.png" alt="" title="" /></img></a>
+            <!-- Uncomment below if you prefer to use a text image -->
+            <!--<h1><a href="#hero">Gadget-Meter</a></h1>-->
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="/adminProductList">Home</a></li>
+                <li><a href="/adminProductList">About Us</a></li>
+                <li><a href="/adminProductList">Contact Us</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+<form id="regForm" action="#" th:action="@{/adminProductList}" method="get" th:object="${productDto}">
+    <h1>Add product</h1>
+    <!-- One "tab" for each step in the form: -->
+    <div class="tab">
+        <!-- Essentials -->
+        <div class="product-division">
+            <hr class="">
+            <span class="span-middle">Essentials</span>
+        </div>
+
+        <h4>Product Identification Number</h4>
+        <p><input name="productId" readonly th:value="*{productId}" id="productId"></p>
+        <h4>Name</h4>
+        <p><input placeholder="Enter the name of product" th:value="*{productName}" oninput="this.className = ''" name="name" id="name"></p>
+        <!--1. Network -->
+        <h3><i class="fas fa-satellite"></i>&nbsp;<label> Network</label></h3>
+        <h4>Technology</h4>
+        <p><input placeholder="Enter the technologies ex: GSM/LTE/HSPA" oninput="this.className = ''" th:value="*{networkTechnology}" name="technology" id="technology"></p>
+
+        <h4>2G Band</h4>
+        <p><input placeholder="Enter bands ex: GSM 850 / 900 / 1800 / 1900" oninput="this.className = ''" th:value="*{network2gBand}" name="2gBand" id="2gBand"></p>
+
+        <h4>3G Band</h4>
+        <p><input placeholder="Enter bands ex: HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100" oninput="this.className = ''" th:value="*{network3gBand}" name="3gBand" id="3gBand"></p>
+
+        <h4>4G Band</h4>
+        <p><input placeholder="Enter bands ex: LTE " oninput="this.className = ''" name="4gBand" th:value="*{network4gBand}" id="4gBand"></p>
+
+        <h4>5G Band</h4>
+        <p><input placeholder="Enter bands ex: 5G NSA / Sub6 " oninput="this.className = ''" name="5gBand" th:value="*{network5gBand}" id="5gBand"></p>
+
+        <h4>Speed</h4>
+        <p><input placeholder="Enter bands ex: HSPA 42.2/5.76 Mbps " oninput="this.className = ''" name="speed" th:value="*{networkSpeed}" id="speed"></p>
+
+        <h4>GPRS</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="gprs" checked value="Yes">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="gprs" value="No">&nbsp;&nbsp;  No</label>
+        </p>
+
+        <h4>EDGE</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="edge" checked value="Yes">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="edge" value="No">&nbsp;&nbsp;  No</label>
+        </p>
+
+        <!--2. Launch -->
+        <h3><i class="fas fa-calendar-week"></i>&nbsp;<label> Launch</label></h3>
+        <h4>Announced</h4>
+        <p><input placeholder="Enter the date at which product is announced" oninput="this.className = ''" name="announced" th:value="*{announced}" id="announced"></p>
+        <h4>Status</h4>
+        <p><input placeholder="Status of the product" oninput="this.className = ''" name="status" th:value="*{status}" id="status"></p>
+
+        <!--3. Body-->
+        <h3><i class="fas fa-mobile"></i>&nbsp;<label> Body</label></h3>
+        <h4>Dimensions</h4>
+        <p>
+            <input style="width:10% !important" type="number" placeholder="length" oninput="this.className = ''" th:value="*{bodyLength}" name="length" id="length">
+            <span>&nbsp;X&nbsp;</span>
+            <input style="width:10% !important" type="number" placeholder="breath" oninput="this.className = ''" th:value="*{bodyWidth}" name="breath" id="breath">
+            <span>&nbsp;X&nbsp;</span>
+            <input style="width:10% !important" type="number" placeholder="height" oninput="this.className = ''" th:value="*{bodyHeight}" name="height" id="height">
+            <span>&nbsp;MM&nbsp;</span>
+        </p>
+        <h4>Weight</h4>
+        <p>
+            <input style="width:10% !important" type="number" placeholder="weight" oninput="this.className = ''" name="weight" th:value="*{weight}" id="weight">
+            <span>&nbsp;gm&nbsp;</span>
+        </p>
+        <h4>SIM</h4>
+        <p><input placeholder="Sim technology used" oninput="this.className = ''" name="simTechnology" th:value="*{simType}" id="simTechnology"></p>
+
+        <!--4. Display-->
+        <h3><i class="fas fa-mobile-alt"></i>&nbsp;<label> Display</label></h3>
+        <h4>Type</h4>
+        <p><input placeholder="Define type of display" oninput="this.className = ''" name="display-type" th:value="*{displayType}" id="displayType"></p>
+        <h4>Size</h4>
+        <p>
+            <input style="width:10% !important" type="number" placeholder="Screen Size" oninput="this.className = ''" name="size" th:value="*{displaySize}" id="displaySize">
+            <span>&nbsp;Inches&nbsp;</span>
+        </p>
+
+        <h4>Resolution</h4>
+        <p>
+            <input style="width:10% !important" type="number" placeholder="X-axis" oninput="this.className = ''" name="pixx" th:value="*{}" id="pixx">
+            <span>&nbsp;X&nbsp;</span>
+            <input style="width:10% !important" type="number" placeholder="Y-axis" oninput="this.className = ''" name="pixy" th:value="*{}" id="pixy">
+            <span>&nbsp;Pixels&nbsp;</span>
+            <input style="width:10% !important" type="number" placeholder="A" oninput="this.className = ''" name="resA" th:value="*{}" id="resA">
+            <span>&nbsp;:&nbsp;</span>
+            <input style="width:10% !important" type="number" placeholder="B" oninput="this.className = ''" name="resB" th:value="*{}" id="resB">
+            <span>&nbsp;Resolution&nbsp;</span>
+            <input style="width:30% !important" placeholder="Description" oninput="this.className = ''" name="res-description" th:value="*{}" id="resDescription">
+        </p>
+        <!--5. Misc-->
+        <h3><i class="fas fa-info-circle"></i>&nbsp;<label> Misc</label></h3>
+        <h4>Colors</h4>
+        <p><input placeholder="Colors available" oninput="this.className = ''" name="colors" th:value="*{colors}" id="colors"></p>
+        <h4>Price (&#8377;)</h4>
+        <p><input placeholder="Price of product" type="number" oninput="this.className = ''" name="price" th:value="*{price}" id="price"></p>
+    </div>
+    <div class="tab">
+        <!-- Highlights -->
+        <div class="product-division">
+            <hr class="">
+            <span class="span-middle">Highlights</span>
+        </div>
+        <!--6. Platform-->
+        <h3><i class="fab fa-android"></i>&nbsp;<label> Platform</label></h3>
+        <h4>OS</h4>
+        <p><input placeholder="Android version description" oninput="this.className = ''" name="os" id="os"></p>
+        <h4>Chipset</h4>
+        <p><input placeholder="Chip set used in device" oninput="this.className = ''" name="chipset" id="chipset"></p>
+        <h4>CPU</h4>
+        <p><input placeholder="CPU description" oninput="this.className = ''" name="cpu" id="cpu"></p>
+        <h4>GPU</h4>
+        <p><input placeholder="GPU description" oninput="this.className = ''" name="gpu" id="gpu"></p>
+
+        <!--7. Main Camera -->
+        <h3><i class="fas fa-video"></i>&nbsp;<label> Main Camera</label></h3>
+        <h4>Type <!--Type--></h4>
+        <p>
+            <select class="form-control" id="mainCameraType">
+                <option value="Single" selected>Single</option>
+                <option value="Dual">Dual</option>
+                <option value="Triple">Triple</option>
+                <option value="Multi">Multi</option>
+            </select>
+        </p>
+        <p><input placeholder="Camera description" oninput="this.className = ''" name="main-camera-description" id="mainCameraDescription"></p>
+        <h4>Feature</h4>
+        <p><input placeholder="Main camera features" oninput="this.className = ''" name="main-camera-features" id="mainCameraFeatures"></p>
+        <h4>video</h4>
+        <p>
+            <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="main-camera-video-resolution" id="mainCameraVideoResolution">
+            <span>&nbsp;p @&nbsp;</span>
+            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="main-camera-video-framerate" id="mainCameraFramerate">
+            <span>&nbsp;fps&nbsp;</span>
+        </p>
+        <!--8. Selfie Camera -->
+        <h3><i class="fas fa-camera"></i>&nbsp;<label> Selfie Camera</label></h3>
+        <h4>Type <!--Type--></h4>
+        <p>
+            <select class="form-control" id="selfieCameraType">
+                <option value="Single" selected>Single</option>
+                <option value="Dual">Dual</option>
+                <option value="Triple">Triple</option>
+                <option value="Multi">Multi</option>
+            </select>
+        </p>
+        <p><input placeholder="Camera description" oninput="this.className = ''" name="selfie-camera-description" id="selfieCameraDescription"></p>
+        <h4>Feature</h4>
+        <p><input placeholder="Main camera features" oninput="this.className = ''" name="selfie-camera-features" id="selfieCameraFeature"></p>
+        <h4>video</h4>
+        <p>
+            <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="selfie-camera-video-resolution" id="selfieCameraVideoResolution">
+            <span>&nbsp;p @&nbsp;</span>
+            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="selfie-camera-video-framerate" id="selfieCameraVideoFramerate">
+            <span>&nbsp;fps&nbsp;</span>
+        </p>
+        <!--9. Features-->
+        <h3><i class="fab fa-elementor"></i>&nbsp;<label> Features</label></h3>
+        <h4>Sensors</h4>
+        <p>
+            <textarea style="width:100%;" rows="4" placeholder="Add additional sensors" oninput="this.className = ''" name="features-sensors" id="featureSensors">
+            </textarea>
+        </p>
+    </div>
+    <div class="tab">
+        <!-- Commons -->
+        <div class="product-division">
+            <hr class="">
+            <span class="span-middle">Commons</span>
+        </div>
+        <!--10. Battery-->
+        <h3><i class="fas fa-battery-full"></i>&nbsp;<label> Battery</label></h3>
+        <h4>Type</h4>
+        <p><input placeholder="Specify battery type" oninput="this.className = ''" name="battery-type" id="batteryType"></p>
+        <h4>Charging</h4>
+        <p><input placeholder="Specify charging type" oninput="this.className = ''" name="battery-charging" id="batteryCharging"></p>
+        <!--11. Memory-->
+        <h3><i class="fas fa-sd-card"></i>&nbsp;<label> Memory</label></h3>
+        <h4>Card slot</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="cardslot" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="cardslot" value="false">&nbsp;&nbsp;  No</label>
+        </p>
+        <h4>Internal</h4>
+        <p><input placeholder="Specify internal storage" oninput="this.className = ''" name="internal-storage" id="internalStorage"></p>
+        <!--12. Sound-->
+        <h3><i class="fas fa-volume-up"></i>&nbsp;<label> Sound</label></h3>
+        <h4>Loudspeaker</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="loudspeaker" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="loudspeaker" value="false">&nbsp;&nbsp;  No</label>
+        </p>
+        <h4>3.5MM Jack</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="jack" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="jack" value="false">&nbsp;&nbsp;  No</label>
+        </p>
+        <h4>Features</h4>
+        <p>
+            <textarea style="width:100%;" rows="4" placeholder="Add additional specifications for sound" oninput="this.className = ''" name="features-sound" id="soundFeatures">
+            </textarea>
+        </p>
+        <!--13. Communications-->
+        <h3><i class="fas fa-satellite-dish"></i>&nbsp;<label> Communication</label></h3>
+        <h4>WLAN</h4>
+        <p><input placeholder="Specify WLAN technology ex Wi-Fi 802.11" oninput="this.className = ''" name="wlan" id="wlan"></p>
+        <h4>Bluetooth</h4>
+        <p><input placeholder="Specify Bluetooth technology ex 5.0, A2DP" oninput="this.className = ''" name="bluetooth" id="bluetooth"></p>
+        <h4>GPS</h4>
+        <p><input placeholder="Specify GPS technology ex A-GPS, GLONASS" oninput="this.className = ''" name="GPS" id="gps"></p>
+        <h4>NFC</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="nfc" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="nfc" value="false">&nbsp;&nbsp;  No</label>
+        </p>
+        <h4>Radio</h4>
+        <p>
+            <label class="radio-inline"><input type="radio" name="radio" checked value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="radio" value="false">&nbsp;&nbsp;  No</label>
+        </p>
+        <h4>USB</h4>
+        <p><input placeholder="Specify USB type ex Type-C 1.0" oninput="this.className = ''" name="usb" id="usb"></p>
+        <h4>Product Description</h4>
+        <p>
+            <textarea style="width:100%;" rows="4" placeholder="Add product description" oninput="this.className = ''" name="product-description" id="description">
+            </textarea>
+        </p>
+    </div>
+    <div class="tab">
+        <!-- Media -->
+        <div class="product-division">
+            <hr class="">
+            <span class="span-middle">Media</span>
+        </div>
+        <!--14. File Upload-->
+        <h3><i class="fas fa-file-upload"></i>&nbsp;<label> Upload Media</label></h3>
+        <h4>Upload Images</h4>
+        <!-- Image upload code starts here  -->
+        <div id="fileuploader">Upload</div>
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                <a class="btn btn-round add-media" id="imageUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload images</a>
+            </div>
+        </div>
+        <!-- Image upload code ends here  -->
+        <br><br>
+        <h4>Add videos</h4>
+        <p>
+            <!--    Upload video code starts here -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="videofileuploader">Select Video</div>
+                <a class="btn btn-round add-media" id="videoUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload from System</a>
+                <!--<input type="file" id="pro-video" name="pro-video" style="display: none;" class="form-control">-->
+            </div>
+            <div class="col-lg-12"></div>
+            <div class="col-lg-12">
+                <div class="video-responsive" id="upload-video-box">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-division">
+                <hr class="">
+                <span class="span-middle">OR</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="input-group" id="video-form">
+                    <span class="input-group-btn">
+                        <a href="javascript:void(0)" class="btn btn-default video-btn-1" type="button"><i class="fab fa-youtube"></i> Youtube video link</a>
+                    </span>
+                    <input type="text" class="form-control video-text" placeholder="ex https://youtube.com/axsjgsdajh?autoplay=1" id="video" name="video">
+                    <span class="input-group-btn">
+                        <a href="javascript:void(0)" class="btn btn-default video-btn-2" type="button">Add</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-lg-12">
+            <div class="video-responsive" id="video-box">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <a class="btn btn-round add-media" id="youtubeVideoUpload" href="javascript:void(0)"><i class="fas fa-cloud-upload-alt"></i> Upload from Youtube</a>
+            </div>
+        </div>
+        <!--    Upload video code ends here -->
+        </p>
+    </div>
+    <div style="overflow:auto;">
+        <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+    </div>
+</form>
+
+<!-- The blueimp Gallery widget -->
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<!--==========================
+Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    &copy; Copyright <strong>Gadget-Meter Studios</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+                    -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!--<script th:src="@{/lib/jquery/jquery.min.js}"></script>-->
+<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<script th:src="@{/lib/superfish/hoverIntent.js}"></script>
+<script th:src="@{/lib/superfish/superfish.min.js}"></script>
+<script th:src="@{/lib/morphext/morphext.min.js}"></script>
+<script th:src="@{/lib/wow/wow.min.js}"></script>
+<script th:src="@{/lib/stickyjs/sticky.js}"></script>
+<script th:src="@{/lib/easing/easing.js}"></script>
+
+<!-- Template Specisifc Custom Javascript File -->
+<script th:src="@{/javascript/custom.js}"></script>
+<script th:src="@{/javascript/addProduct.js}"></script>
+
+<!--<script th:src="@{/javascript/fileUpload.js}"></script>-->
+<!-- The main application script -->
+<script th:src="@{/javascript/main.js}"></script>
+<script>
+$(document).ready(function()
+{
+	var extraObj = $("#fileuploader").uploadFile({
+	    url:"/upload/IMAGE/product/"+$("#productId").val(),
+        fileName:"myfile",
+        acceptFiles:"image/*",
+        showPreview:true,
+        maxFileCount:5,
+        previewHeight: "100px",
+        previewWidth: "100px",
+        sequential:true,
+        sequentialCount:1,
+        autoSubmit:false
+	});
+	$("#imageUpload").click(function()
+    {
+        extraObj.startUpload();
+    });
+
+    var uploadedvideoName;
+    var extravideoThumbnailObj;
+    var extravideoObj = $("#videofileuploader").uploadFile({
+	    url:"/upload/VIDEO/product/"+$("#productId").val(),
+        fileName:"myfile",
+        multiple:false,
+        acceptFiles:"video/*",
+        showPreview:true,
+        maxFileCount:1,
+        previewHeight: "200px",
+        previewWidth: "200px",
+        sequential:true,
+        sequentialCount:1,
+        autoSubmit:false,
+        onSuccess:function(files,data,xhr,pd)
+        {
+            //files: list of files
+            //data: response from server
+            //xhr : jquer xhr object
+            var res = $.parseJSON(data);
+            uploadedvideoName = res.mediaKey;
+            alert("data in var is :"+uploadedvideoName);
+            $("#upload-video-box").append("<video controls='controls' preload='metadata' id='videoOnUpload'><source src='"+res.mediaLink+"' type='video/mp4'></video><br><br><a class='btn btn-round add-media' onclick='shoot()' id='captureScreenShot'>Capture Screenshot</a><br><br><div id='output'></div><br><br><span style='color:red'>* Right click to save image and then upload as thumbnail </span> <div id='thumbnailuploader'>Upload thumbanail for video</div><a class='btn btn-round add-media thumbnailUpload' id='thumbnailUpload'>Upload</a>");
+            //<a class='btn btn-round add-media' id='uploadScreenshotButton' onclick='addTumbnailImage(\""+res.mediaKey+"\")' style='display:none;'>Upload Screenshot</a>
+            var extravideoThumbnailObj = $("#thumbnailuploader").uploadFile({
+                url:"/upload/VIDEO/"+uploadedvideoName+"/thumbnail",
+                fileName:"myfile",
+                acceptFiles:"image/*",
+                showPreview:true,
+                multiple:false,
+                previewHeight: "100px",
+                previewWidth: "100px",
+                sequential:true,
+                sequentialCount:1,
+                autoSubmit:false
+            });
+            $("#thumbnailUpload").click(function()
+            {
+                extravideoThumbnailObj.startUpload();
+            });
+        }
+	});
+	$("#videoUpload").click(function()
+    {
+        extravideoObj.startUpload();
+    });
+
+    function getId(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            return 'error';
+        }
+    }
+
+    $(".video-btn-2").click(function(){
+        //alert("here");
+        var myId = getId($("#video").val());
+        /*alert(myId);*/
+        $('#video-box').html('<iframe width="560" height="315" src="//www.youtube.com/embed/' + myId + '" frameborder="0" allowfullscreen></iframe>');
+    });
+    $("#youtubeVideoUpload").click(function(){
+        $.ajax({
+            type: 'POST',
+            url: "/upload/VIDEO/YOUTUBE/"+getId($("#video").val())+"/product/"+$("#productId").val(),
+            contentType: 'application/json',
+            processData: false,
+            crossDomain: true,
+            headers: { 'Access-Control-Allow-Headers': 'x-requested-with' ,'Access-Control-Allow-Origin' : '*'}
+        })
+        .success(function(result) {
+            alert('Video added successfully');
+            console.log(result);
+        })
+        .error(function() {
+            alert('Youtube video upload failed');
+            console.log( arguments);
+        });
+    });
+});
+</script>
+</body>
+</html>
