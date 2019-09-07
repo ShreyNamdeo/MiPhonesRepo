@@ -105,6 +105,12 @@ public class MiHomeController {
         List<ProductMediaDto> productMediaList = productServices.getAllMediaForProductById(product.getId());
         model.addAttribute("title",title);
         model.addAttribute("productDto",new ProductDto(product,productMediaList));
+        String[] resolutionVals = product.getResolution().split(" ");
+        model.addAttribute("pixx",resolutionVals[0]!=null ? resolutionVals[0] : " ");
+        model.addAttribute("pixy",resolutionVals[0]!=null ? resolutionVals[2] : " ");
+        model.addAttribute("resA",resolutionVals[0]!=null ? resolutionVals[4] : " ");
+        model.addAttribute("resB",resolutionVals[0]!=null ? resolutionVals[6] : " ");
+        model.addAttribute("resDesc",resolutionVals[0]!=null ? resolutionVals[8] : " ");
         //model.addAttribute("uuid", UUID.randomUUID());
         return "editProduct";
     }

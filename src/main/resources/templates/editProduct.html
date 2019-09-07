@@ -164,15 +164,15 @@
 
         <h4>Resolution</h4>
         <p>
-            <input style="width:10% !important" type="number" placeholder="X-axis" oninput="this.className = ''" name="pixx" th:value="*{}" id="pixx">
+            <input style="width:10% !important" type="number" placeholder="X-axis" oninput="this.className = ''" name="pixx" th:value="${pixx}" id="pixx">
             <span>&nbsp;X&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="Y-axis" oninput="this.className = ''" name="pixy" th:value="*{}" id="pixy">
+            <input style="width:10% !important" type="number" placeholder="Y-axis" oninput="this.className = ''" name="pixy" th:value="${pixy}" id="pixy">
             <span>&nbsp;Pixels&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="A" oninput="this.className = ''" name="resA" th:value="*{}" id="resA">
+            <input style="width:10% !important" type="number" placeholder="A" oninput="this.className = ''" name="resA" th:value="${resA}" id="resA">
             <span>&nbsp;:&nbsp;</span>
-            <input style="width:10% !important" type="number" placeholder="B" oninput="this.className = ''" name="resB" th:value="*{}" id="resB">
+            <input style="width:10% !important" type="number" placeholder="B" oninput="this.className = ''" name="resB" th:value="${resB}" id="resB">
             <span>&nbsp;Resolution&nbsp;</span>
-            <input style="width:30% !important" placeholder="Description" oninput="this.className = ''" name="res-description" th:value="*{}" id="resDescription">
+            <input style="width:30% !important" placeholder="Description" oninput="this.className = ''" name="res-description" th:value="${resDesc}" id="resDescription">
         </p>
         <!--5. Misc-->
         <h3><i class="fas fa-info-circle"></i>&nbsp;<label> Misc</label></h3>
@@ -190,23 +190,23 @@
         <!--6. Platform-->
         <h3><i class="fab fa-android"></i>&nbsp;<label> Platform</label></h3>
         <h4>OS</h4>
-        <p><input placeholder="Android version description" oninput="this.className = ''" name="os" id="os"></p>
+        <p><input placeholder="Android version description" th:value="*{os}" oninput="this.className = ''" name="os" id="os"></p>
         <h4>Chipset</h4>
-        <p><input placeholder="Chip set used in device" oninput="this.className = ''" name="chipset" id="chipset"></p>
+        <p><input placeholder="Chip set used in device" th:value="*{chipSet}" oninput="this.className = ''" name="chipset" id="chipset"></p>
         <h4>CPU</h4>
-        <p><input placeholder="CPU description" oninput="this.className = ''" name="cpu" id="cpu"></p>
+        <p><input placeholder="CPU description" th:value="*{cpu}" oninput="this.className = ''" name="cpu" id="cpu"></p>
         <h4>GPU</h4>
-        <p><input placeholder="GPU description" oninput="this.className = ''" name="gpu" id="gpu"></p>
+        <p><input placeholder="GPU description" th:value="*{gpu}" oninput="this.className = ''" name="gpu" id="gpu"></p>
 
         <!--7. Main Camera -->
         <h3><i class="fas fa-video"></i>&nbsp;<label> Main Camera</label></h3>
         <h4>Type <!--Type--></h4>
         <p>
-            <select class="form-control" id="mainCameraType">
-                <option value="Single" selected>Single</option>
-                <option value="Dual">Dual</option>
-                <option value="Triple">Triple</option>
-                <option value="Multi">Multi</option>
+            <select class="form-control" th:field="*{mainCameraType}" id="mainCameraType">
+                <option th:value="Single" selected>Single</option>
+                <option th:value="Dual">Dual</option>
+                <option th:value="Triple">Triple</option>
+                <option th:value="Multi">Multi</option>
             </select>
         </p>
         <p><input placeholder="Camera description" oninput="this.className = ''" name="main-camera-description" id="mainCameraDescription"></p>
