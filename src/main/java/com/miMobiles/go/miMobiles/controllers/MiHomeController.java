@@ -111,7 +111,7 @@ public class MiHomeController {
         model.addAttribute("resA",resolutionVals[0]!=null ? resolutionVals[4] : " ");
         model.addAttribute("resB",resolutionVals[0]!=null ? resolutionVals[6] : " ");
         model.addAttribute("resDesc",resolutionVals[0]!=null ? resolutionVals[8] : " ");
-        //model.addAttribute("uuid", UUID.randomUUID());
+        model.addAttribute("productMediaList",productMediaList);
         return "editProduct";
     }
 

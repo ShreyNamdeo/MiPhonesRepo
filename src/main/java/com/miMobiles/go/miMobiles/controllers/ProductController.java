@@ -33,4 +33,10 @@ public class ProductController {
         productServices.deleteProduct(productId);
         return "{\"message\" :true}";
     }
+
+    @DeleteMapping("/media/{mediaId}")
+    public @ResponseBody String deleteProductMediaById(@PathVariable("mediaId") Long mediaId){
+        productServices.deleteProductMediaById(mediaId);
+        return "{\"message\" :true}";
+    }
 }

@@ -34,7 +34,7 @@ public class ProductService {
             if (productDto.getNetworkTechnology() != null)
                 product.setNetworkTechnology(productDto.getNetworkTechnology());
             if (productDto.getAnnounced() != null)
-                product.setNetworkTechnology(productDto.getAnnounced());
+                product.setAnnounced(productDto.getAnnounced());
             if(productDto.getStatus() != null)
                 product.setStatus(productDto.getStatus());
             product.setBodyLength(productDto.getBodyLength());

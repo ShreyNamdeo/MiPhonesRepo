@@ -209,9 +209,9 @@
                 <option th:value="Multi">Multi</option>
             </select>
         </p>
-        <p><input placeholder="Camera description" oninput="this.className = ''" name="main-camera-description" id="mainCameraDescription"></p>
+        <p><input placeholder="Camera description" oninput="this.className = ''" name="main-camera-description" th:value="*{mainCameraDescription}" id="mainCameraDescription"></p>
         <h4>Feature</h4>
-        <p><input placeholder="Main camera features" oninput="this.className = ''" name="main-camera-features" id="mainCameraFeatures"></p>
+        <p><input placeholder="Main camera features" oninput="this.className = ''" name="main-camera-features" th:value="*{mainCameraFeatures}" id="mainCameraFeatures"></p>
         <h4>video</h4>
         <p>
             <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="main-camera-video-resolution" id="mainCameraVideoResolution">
@@ -223,28 +223,28 @@
         <h3><i class="fas fa-camera"></i>&nbsp;<label> Selfie Camera</label></h3>
         <h4>Type <!--Type--></h4>
         <p>
-            <select class="form-control" id="selfieCameraType">
-                <option value="Single" selected>Single</option>
-                <option value="Dual">Dual</option>
-                <option value="Triple">Triple</option>
-                <option value="Multi">Multi</option>
+            <select class="form-control" th:field="*{selfieCameraType}" id="selfieCameraType">
+                <option th:value="Single" selected>Single</option>
+                <option th:value="Dual">Dual</option>
+                <option th:value="Triple">Triple</option>
+                <option th:value="Multi">Multi</option>
             </select>
         </p>
-        <p><input placeholder="Camera description" oninput="this.className = ''" name="selfie-camera-description" id="selfieCameraDescription"></p>
+        <p><input placeholder="Camera description" oninput="this.className = ''" name="selfie-camera-description" th:value="*{selfieCameraDescription}" id="selfieCameraDescription"></p>
         <h4>Feature</h4>
-        <p><input placeholder="Main camera features" oninput="this.className = ''" name="selfie-camera-features" id="selfieCameraFeature"></p>
+        <p><input placeholder="Selfie camera features" oninput="this.className = ''" name="selfie-camera-features" th:value="*{selfieCameraFeatures}" id="selfieCameraFeature"></p>
         <h4>video</h4>
         <p>
             <input style="width:20% !important" type="number" placeholder="ex 480, 720" oninput="this.className = ''" name="selfie-camera-video-resolution" id="selfieCameraVideoResolution">
             <span>&nbsp;p @&nbsp;</span>
-            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''" name="selfie-camera-video-framerate" id="selfieCameraVideoFramerate">
+            <input style="width:20% !important" type="number" placeholder="ex 30, 60 " oninput="this.className = ''"  name="selfie-camera-video-framerate" id="selfieCameraVideoFramerate">
             <span>&nbsp;fps&nbsp;</span>
         </p>
         <!--9. Features-->
         <h3><i class="fab fa-elementor"></i>&nbsp;<label> Features</label></h3>
         <h4>Sensors</h4>
         <p>
-            <textarea style="width:100%;" rows="4" placeholder="Add additional sensors" oninput="this.className = ''" name="features-sensors" id="featureSensors">
+            <textarea style="width:100%;" rows="4" placeholder="Add additional sensors" oninput="this.className = ''" th:value="*{selfieCameraFeatures}" name="features-sensors" id="featureSensors">
             </textarea>
         </p>
     </div>
@@ -257,9 +257,9 @@
         <!--10. Battery-->
         <h3><i class="fas fa-battery-full"></i>&nbsp;<label> Battery</label></h3>
         <h4>Type</h4>
-        <p><input placeholder="Specify battery type" oninput="this.className = ''" name="battery-type" id="batteryType"></p>
+        <p><input placeholder="Specify battery type" oninput="this.className = ''" th:value="*{batteryType}" name="battery-type" id="batteryType"></p>
         <h4>Charging</h4>
-        <p><input placeholder="Specify charging type" oninput="this.className = ''" name="battery-charging" id="batteryCharging"></p>
+        <p><input placeholder="Specify charging type" oninput="this.className = ''" th:value="*{batteryCharging}" name="battery-charging" id="batteryCharging"></p>
         <!--11. Memory-->
         <h3><i class="fas fa-sd-card"></i>&nbsp;<label> Memory</label></h3>
         <h4>Card slot</h4>
@@ -268,7 +268,7 @@
             <label class="radio-inline"><input type="radio" name="cardslot" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Internal</h4>
-        <p><input placeholder="Specify internal storage" oninput="this.className = ''" name="internal-storage" id="internalStorage"></p>
+        <p><input placeholder="Specify internal storage" oninput="this.className = ''" name="internal-storage" th:value="*{internalStorage}" id="internalStorage"></p>
         <!--12. Sound-->
         <h3><i class="fas fa-volume-up"></i>&nbsp;<label> Sound</label></h3>
         <h4>Loudspeaker</h4>
@@ -283,7 +283,7 @@
         </p>
         <h4>Features</h4>
         <p>
-            <textarea style="width:100%;" rows="4" placeholder="Add additional specifications for sound" oninput="this.className = ''" name="features-sound" id="soundFeatures">
+            <textarea style="width:100%;" rows="4" placeholder="Add additional specifications for sound" th:value="*{soundFeatures}" oninput="this.className = ''" name="features-sound" id="soundFeatures">
             </textarea>
         </p>
         <!--13. Communications-->
@@ -320,6 +320,49 @@
         </div>
         <!--14. File Upload-->
         <h3><i class="fas fa-file-upload"></i>&nbsp;<label> Upload Media</label></h3>
+        <h4>Uploaded Media</h4>
+        <div class="row" th:each="prodMedia : ${productMediaList}">
+            <!-- Uploaded Image -->
+            <div class="col-lg-12" th:if="${prodMedia.mediaType == 'IMAGE'}">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <img th:src="${prodMedia.url}" class="media-object" style="width:240px">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Action</h4>
+                        <a href="javascript:void(0)" th:id="${prodMedia.id}" onclick="deleteProductMedia(this.id)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Uploaded video -->
+            <div class="col-lg-12" th:if="${prodMedia.mediaType == 'VIDEO' and prodMedia.videoType == 'UPLOAD'}">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <video width="240" height="240" controls="controls" preload="metadata" class="media-object">
+                            <source th:src="${prodMedia.url}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Action</h4>
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+            <!-- You tube I frame -->
+            <div class="col-lg-12" th:if="${prodMedia.mediaType == 'VIDEO' and prodMedia.videoType == 'YOUTUBE'}">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <iframe class="media-object" width="240" height="240" th:src="${prodMedia.url}" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Action</h4>
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
         <h4>Upload Images</h4>
         <!-- Image upload code starts here  -->
         <div id="fileuploader">Upload</div>
@@ -442,6 +485,7 @@ Footer
 <!-- Template Specisifc Custom Javascript File -->
 <script th:src="@{/javascript/custom.js}"></script>
 <script th:src="@{/javascript/addProduct.js}"></script>
+<script th:src="@{/javascript/deleteProductMedia.js}"></script>
 
 <!--<script th:src="@{/javascript/fileUpload.js}"></script>-->
 <!-- The main application script -->
