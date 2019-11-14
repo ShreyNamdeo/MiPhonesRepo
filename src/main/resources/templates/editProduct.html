@@ -116,14 +116,14 @@
 
         <h4>GPRS</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="gprs" checked value="Yes">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="gprs" value="No">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="gprs" th:checked="*{gprs=='Yes'}" value="Yes">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="gprs" th:checked="*{gprs=='No'}" value="No">&nbsp;&nbsp;  No</label>
         </p>
 
         <h4>EDGE</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="edge" checked value="Yes">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="edge" value="No">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="edge" th:checked="*{edge=='Yes'}" value="Yes">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="edge" th:checked="*{edge=='No'}" value="No">&nbsp;&nbsp;  No</label>
         </p>
 
         <!--2. Launch -->
@@ -264,8 +264,8 @@
         <h3><i class="fas fa-sd-card"></i>&nbsp;<label> Memory</label></h3>
         <h4>Card slot</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="cardslot" checked value="true">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="cardslot" value="false">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="cardslot" th:checked="*{cardSlot==true}" value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="cardslot" th:checked="*{cardSlot==false}" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Internal</h4>
         <p><input placeholder="Specify internal storage" oninput="this.className = ''" name="internal-storage" th:value="*{internalStorage}" id="internalStorage"></p>
@@ -273,13 +273,13 @@
         <h3><i class="fas fa-volume-up"></i>&nbsp;<label> Sound</label></h3>
         <h4>Loudspeaker</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="loudspeaker" checked value="true">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="loudspeaker" value="false">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="loudspeaker" th:checked="*{loudSpeaker==true}" value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="loudspeaker" th:checked="*{loudSpeaker==false}" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>3.5MM Jack</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="jack" checked value="true">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="jack" value="false">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="jack" th:checked="*{mm35jack==true}" value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="jack" th:checked="*{mm35jack==false}" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Features</h4>
         <p>
@@ -296,13 +296,13 @@
         <p><input placeholder="Specify GPS technology ex A-GPS, GLONASS" oninput="this.className = ''" th:value="*{gps}" name="GPS" id="gps"></p>
         <h4>NFC</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="nfc" checked value="true">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="nfc" value="false">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="nfc" th:checked="*{nfc==true}" value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="nfc" th:checked="*{nfc==false}" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>Radio</h4>
         <p>
-            <label class="radio-inline"><input type="radio" name="radio" checked value="true">&nbsp;&nbsp;  Yes</label>
-            <label class="radio-inline"><input type="radio" name="radio" value="false">&nbsp;&nbsp;  No</label>
+            <label class="radio-inline"><input type="radio" name="radio" th:checked="*{radio==true}" value="true">&nbsp;&nbsp;  Yes</label>
+            <label class="radio-inline"><input type="radio" name="radio" th:checked="*{radio==false}" value="false">&nbsp;&nbsp;  No</label>
         </p>
         <h4>USB</h4>
         <p><input placeholder="Specify USB type ex Type-C 1.0" oninput="this.className = ''" th:value="*{usb}" name="usb" id="usb"></p>
