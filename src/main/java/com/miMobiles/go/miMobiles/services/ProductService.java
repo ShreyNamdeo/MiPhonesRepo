@@ -94,7 +94,7 @@ public class ProductService {
             if (productDto.getSelfieCameraDescription() != null)
                 product.setSelfieCameraDescription(productDto.getSelfieCameraDescription());
             if (productDto.getSelfieCameraFeatures() != null)
-                product.setMainCameraFeatures(productDto.getMainCameraFeatures());
+                product.setSelfieCameraFeatures(productDto.getSelfieCameraFeatures());
             if (productDto.getSelfieCameraVideo() != null)
                 product.setSelfieCameraVideo(productDto.getSelfieCameraVideo());
             if (productDto.getOtherSensors() != null)

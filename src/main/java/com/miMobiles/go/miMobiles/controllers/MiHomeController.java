@@ -103,6 +103,7 @@ public class MiHomeController {
     public String editProduct(Model model,@RequestParam("product") @DefaultValue(value = " ") String productId ){
         Product product = productServices.getByProductId(productId);
         List<ProductMediaDto> productMediaList = productServices.getAllMediaForProductById(product.getId());
+        model.addAttribute("productMediaList",productMediaList);
         model.addAttribute("title",title);
         model.addAttribute("productDto",new ProductDto(product,productMediaList));
         String[] resolutionVals = product.getResolution().split(" ");
@@ -111,7 +112,22 @@ public class MiHomeController {
         model.addAttribute("resA",resolutionVals[0]!=null ? resolutionVals[4] : " ");
         model.addAttribute("resB",resolutionVals[0]!=null ? resolutionVals[6] : " ");
         model.addAttribute("resDesc",resolutionVals[0]!=null ? resolutionVals[8] : " ");
-        model.addAttribute("productMediaList",productMediaList);
+        if (product.getMainCameraVideo() != null){
+            String[] mainCameraVideoVals = product.getMainCameraVideo().split(" ");
+            model.addAttribute("mainCameraVideoPixel",mainCameraVideoVals[0].replace("p",""));
+            model.addAttribute("mainCameraVideoFps",mainCameraVideoVals[1].replace("@",""));
+        }else{
+            model.addAttribute("mainCameraVideoPixel","");
+            model.addAttribute("mainCameraVideoFps","");
+        }
+        if (product.getSelfieCameraVideo() != null){
+            String[] selfieCameraVideoVals = product.getSelfieCameraVideo().split(" ");
+            model.addAttribute("selfieCameraVideoPixel",selfieCameraVideoVals[0].replace("p",""));
+            model.addAttribute("selfieCameraVideoFps",selfieCameraVideoVals[1].replace("@",""));
+        }else{
+            model.addAttribute("selfieCameraVideoPixel","");
+            model.addAttribute("selfieCameraVideoFps","");
+        }
         return "editProduct";
     }
 
