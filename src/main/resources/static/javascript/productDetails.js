@@ -14,4 +14,20 @@ $(document).ready(function() {
         $('#collapse-button').toggleClass("hidden");
         $('#additional-technologies').slideToggle();
     });
+
+    $('#expand-button2').click(function (){
+        $('#collapse-button2').toggleClass("hidden");
+        $('#expand-button2').toggleClass("hidden");
+        $('#additional-technologies2').slideToggle();
+    });
+
+    $('#collapse-button2').click(function (){
+        $('#expand-button2').toggleClass("hidden");
+        $('#collapse-button2').toggleClass("hidden");
+        $('#additional-technologies2').slideToggle();
+    });
+
+    $('a[href^="#"]').click(function(e) {
+        e.preventDefault();
+    });
 });
